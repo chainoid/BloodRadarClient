@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="toolbarBackground">#EF6856</color>
+    <color name="mainText">#ffffff</color>
+    <color name="blueOEE">#26a1da</color>
+    <color name="primary_500">#e0e0e0</color>
+    <color name="logout_bg">#e0e0e0</color>
+    <color name="logout_bg1">#26a1da</color>
+    <!--Indigo 700-->
+    <color name="primary_700">#000000</color>
+    <color name="logout_bg2">#1986a1</color>
+    <!--Pink 500-->
+    <color name="accent_500">#E91E63</color>
+    <!--Pink 700-->
+    <color name="accent_700">#C2185B</color>
+    <color name="black_trans80">#33000000</color>
+    <color name="bgButton">#55210F</color>
+    <color name="indicator_unselected">#4D000000</color>
+    <color name="actionbar_opacity">#33000000</color>
+    <color name="fauf_detail">#33000000</color>
+
+    <color name="bg_light">#ffffff</color>
+    <color name="fab_background">#becbc5</color>
+    <color name="background">#EFFFFFFF </color>
+    <color name="viewBg">#FFEFECE7</color>
+    <color name="viewBgDark">#FFFFCC77</color>
+    <color name="cardBg">#ffffff</color>
+    <color name="machine_title">#179C7D</color>
+    <color name="button_text">#ffffff</color>
+    <color name="textColor">#ffffff</color>
+    <color name="info">#BDBDBD</color>
+    <color name="failure">#00695c</color>
+    <color name="white">#ffffff</color>
+    <color name="status_bar">#212121</color>
+    <color name="background_md">#fafafa</color>
+    <color name="toolbar_col">#e0e0e0</color>
+    <color name="code_green">#2e7d32</color>
+    <color name="code_red">#d50000</color>
+    <color name="code_orange">#ef6c00</color>
+    <color name="disabled_grey">#BDBDBD</color>
+    <color name="code_yellow">#F4C77F</color>
+
+    <!-- colors used in OEE-App -->
+    <!-- Background colors -->
+    <color name="zigZagBackground">#ECEFF1</color>
+    <color name="backgroundOEE">#fafafa</color>
+    <color name="greyOEE">#f5f5f5</color>
+
+    <!-- Font colors -->
+    <color name="lightText">#616161</color>
+    <color name="buttonText">#ffffff</color>
+    <color name="greenOEE">#388E3C</color>
+    <color name="redOEE">#D32F2F</color>
+    <color name="Transparent">#00000000</color>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HyperledgerApp</string>
+    <string-array name="adminOptions">
+        <item>Get all Products</item>
+        <item>Get a Product by its ID</item>
+        <item>Get a Product by scanning QR</item>
+        <item>Create Product</item>
+        <item>Update Owner</item>
+    </string-array>
+    <string-array name="regulatorOptions">
+        <item>Get all Products</item>
+        <item>Get a Product by its ID</item>
+        <item>Get a Product by scanning QR</item>
+    </string-array>
+</resources>
