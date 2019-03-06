@@ -12,10 +12,12 @@ import android.widget.TextView;
 public class GetAllRecyclerAdapter extends RecyclerView.Adapter<GetAllRecyclerAdapter.MyViewHolder>{
     private Context mContext;
     private String[] donorID;
-    private String[] owner;
+    private String[] name;
     private String[] phone;
     private String[] address;
+    private String[] ssn;
     private String[] age;
+    private String[] sex;
 
     private String[] uniqueID;
 
@@ -23,18 +25,21 @@ public class GetAllRecyclerAdapter extends RecyclerView.Adapter<GetAllRecyclerAd
         public TextView txtOwner;
         public TextView txtAddress;
         public TextView txtPhone;
-        public TextView txtUniqueID;
+        public TextView txtSSN;
         public TextView txtDonorID;
         public TextView txtAge;
+        public TextView txtSex;
 
         public MyViewHolder(View view) {
             super(view);
-            txtOwner = (TextView) view.findViewById(R.id.txtAddress);
+         //   txtOwner = (TextView) view.findViewById(R.id.txtAddress);
             txtAddress = (TextView) view.findViewById(R.id.txtAddress);
             txtPhone = (TextView) view.findViewById(R.id.txtPhone);
-            txtUniqueID = (TextView) view.findViewById(R.id.txtUniqueID);
+        //    txtUniqueID = (TextView) view.findViewById(R.id.txtUniqueID);
             txtDonorID = (TextView) view.findViewById(R.id.txtDonorID);
             txtAge = (TextView) view.findViewById(R.id.txtAge);
+            txtSSN = (TextView) view.findViewById(R.id.txtSSN);
+            txtSex = (TextView) view.findViewById(R.id.txtSex);
         }
     }
 
@@ -46,24 +51,26 @@ public class GetAllRecyclerAdapter extends RecyclerView.Adapter<GetAllRecyclerAd
         return new MyViewHolder(itemView);
     }
 
-    public GetAllRecyclerAdapter(String[] productID,String[] owner,String[] timestamp,String[] location,String[] uniqueID, String[] age, Context context) {
-        this.donorID = productID;
+    public GetAllRecyclerAdapter(String[] donorID, String[] name, String[] phone, String[] address, String[] ssn, String[] age, String[] sex, Context context) {
+        this.donorID = donorID;
         this.mContext=context;
-        this.owner=owner;
-        this.phone =timestamp;
-        this.address=location;
-        this.uniqueID=uniqueID;
-        this.age = age;
+        this.name = name;
+        this.phone =phone;
+        this.address=address;
+        this.ssn=ssn;
+        this.age=age;
+        this.sex=sex;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.txtOwner.setText(owner[position]);
+     //   holder.txtOwner.setText(name[position]);
         holder.txtAddress.setText(address[position]);
         holder.txtDonorID.setText(donorID[position]);
         holder.txtPhone.setText(phone[position]);
-        holder.txtUniqueID.setText(uniqueID[position]);
+        holder.txtSSN.setText(ssn[position]);
         holder.txtAge.setText(age[position]);
+        holder.txtSex.setText(sex[position]);
         animate(holder,mContext);
     }
 

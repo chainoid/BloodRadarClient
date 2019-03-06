@@ -27,6 +27,8 @@ public class GetAllDonorsActivity extends AppCompatActivity {
     private String[] phone;
     private String[] ssn;
     private String[] age;
+    private String[] sex;
+    private String[] btype;
     private TextView toolbarTitle;
     private ImageView imgLogout;
     private RecyclerView mRecyclerView;
@@ -70,9 +72,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
     public void getAllDonors(){
 
 
-        System.out.println("Get all donors");
-
-        final String URL_GET_ALL_PRODUCTS="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype"+Config.Btype;
+        final String URL_GET_ALL_PRODUCTS="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype/"+Config.Btype;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -108,11 +108,16 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             name =new String[result.length()];
             phone =new String[result.length()];
             address =new String[result.length()];
+            age = new String[result.length()];
+            sex = new String[result.length()];
+            btype = new String[result.length()];
+
 
             for(int i = 0; i<result.length(); i++){
                 JSONObject jo = result.getJSONObject(i);
                 try {
                     donorID[i]=jo.getString("Key");
+
                     String Record=jo.getString("Record");
                     try{
                         JSONObject joRecord=new JSONObject(Record);
@@ -121,6 +126,8 @@ public class GetAllDonorsActivity extends AppCompatActivity {
                         phone[i]=joRecord.getString("phone");
                         ssn[i]=joRecord.getString("ssn");
                         age[i]=joRecord.getString("age");
+                        sex[i]=joRecord.getString("sex");
+                        btype[i]=joRecord.getString("btype");
 
                     }catch (Exception e){
                         name[i]="-";
@@ -128,7 +135,10 @@ public class GetAllDonorsActivity extends AppCompatActivity {
                         phone[i]="-";
                         ssn[i]="-";
                         age[i]="-";
+                        sex[i]="-";
+                        btype[i]="-";
                     }
+
                 }
                 catch(JSONException e)
                 {
@@ -143,7 +153,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
     }
 
     private void setAllDonors(){
-        mAdapter = new GetAllRecyclerAdapter(donorID, name, phone, address, ssn, age, context);
+        mAdapter = new GetAllRecyclerAdapter(donorID, name, phone, address, ssn, age, sex, context);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -213,7 +223,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 JSON_STRING = s;
-                getProductResult();
+                getDonorResult();
                 setAllDonors();
             }
         }
@@ -221,7 +231,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
         gjp.execute();
     }
 
-    private void getProductResult(){
+    private void getDonorResult(){
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(JSON_STRING);
@@ -231,7 +241,8 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             phone =new String[1];
             address =new String[1];
             age =new String[1];
-
+            sex =new String[1];
+            btype =new String[1];
 
             donorID[0]=Config.DonorID;
             name[0]=jsonObject.getString("name");
@@ -239,6 +250,8 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             phone[0]=jsonObject.getString("phone");
             ssn[0]=jsonObject.getString("ssn");
             age[0]=jsonObject.getString("age");
+            sex[0]=jsonObject.getString("sex");
+            btype[0]=jsonObject.getString("btype");
 
 
         } catch (JSONException e) {
@@ -247,6 +260,8 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             phone[0]="-";
             ssn[0]="-";
             age[0]="-";
+            sex[0]="-";
+            btype[0]="-";
         }
     }
 

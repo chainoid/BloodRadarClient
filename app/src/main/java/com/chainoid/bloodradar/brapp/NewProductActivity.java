@@ -28,7 +28,7 @@ public class NewProductActivity extends AppCompatActivity {
         txtOwner=(EditText)findViewById(R.id.txtAddress);
         txtTS=(EditText)findViewById(R.id.txtPhone);
         txtLocation=(EditText)findViewById(R.id.txtAddress);
-        txtUID=(EditText)findViewById(R.id.txtUniqueID);
+        txtUID=(EditText)findViewById(R.id.txtSSN);
         validateData();
         btnCreate=(Button)findViewById(R.id.btnOk);
 

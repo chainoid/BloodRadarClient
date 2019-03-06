@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="170dp"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
@@ -15,55 +15,50 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/llFauf"
         android:layout_width="match_parent"
-        android:layout_height="139dp"
+        android:layout_height="169dp"
         android:clickable="true"
         android:elevation="2dp"
         android:gravity="center_horizontal"
-        android:orientation="horizontal"
         android:paddingTop="10dp"
         tools:background="@android:color/white"
         tools:ignore="RtlSymmetry">
 
         <LinearLayout
-            android:layout_width="90dp"
+            android:layout_width="64dp"
             android:layout_height="119dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="0dp"
+            android:baselineAligned="false"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
+
             <TextView
-                android:id="@+id/txtVORNR"
+                android:id="@+id/txtPhoneLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|left"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:alpha="0.70"
-                android:baselineAligned="false"
                 android:fontFamily="@font/arvo"
-                android:gravity="center"
-                android:text="DonorID"
-                android:textColor="#000000"
+                android:gravity="left"
+                android:text="Phone"
+                android:textColor="@color/lightText"
                 android:textSize="12dp" />
 
-            <TextView
-                android:id="@+id/txtDonorID"
-                style="@style/TextAppearance.AppCompat.Headline"
-                android:layout_width="90dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal|left"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/arvo"
-                android:gravity="center"
-                android:text="N"
-                android:textColor="@color/blueOEE"
-                android:textSize="16dp"
-                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtAVONR"
-                android:layout_width="80dp"
+                android:id="@+id/txtPhone"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="190dp"
+                android:layout_height="32dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/arvo"
+                android:text="Nougat"
+                android:textSize="15dp"
+                tools:targetApi="jelly_bean" />
+
+
+            <TextView
+                android:id="@+id/txtAgeLabel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
@@ -75,7 +70,7 @@
             <TextView
                 android:id="@+id/txtAge"
                 style="@style/TextAppearance.AppCompat.Subhead"
-                android:layout_width="80dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:ellipsize="end"
@@ -110,35 +105,43 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtARBPLName"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtDonorIDLabel"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|left"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:alpha="0.70"
+                            android:baselineAligned="false"
                             android:fontFamily="@font/arvo"
-                            android:gravity="left"
-                            android:text="Phone"
-                            android:textColor="@color/lightText"
+                            android:gravity="center"
+                            android:text="DonorID"
+                            android:textColor="#000000"
                             android:textSize="12dp" />
 
-                        <!-- Arbeitsplatz -->
                         <TextView
-                            android:id="@+id/txtPhone"
-                            style="@style/TextAppearance.AppCompat.Subhead"
-                            android:layout_width="190dp"
-                            android:layout_height="32dp"
-                            android:ellipsize="end"
+                            android:id="@+id/txtDonorID"
+                            style="@style/TextAppearance.AppCompat.Headline"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_horizontal|left"
+                            android:layout_marginLeft="10dp"
                             android:fontFamily="@font/arvo"
-                            android:text="Nougat"
-                            android:textSize="15dp"
-                            tools:targetApi="jelly_bean" />
+                            android:gravity="center"
+                            android:text="N"
+                            android:textColor="@color/blueOEE"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
                     </LinearLayout>
 
-                    <LinearLayout
+                    <!--LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                    </LinearLayout>
+                    </LinearLayout-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -147,7 +150,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtFreiText"
+                        android:id="@+id/txtAddressLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/arvo"
@@ -197,7 +200,33 @@
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/txtUniqueID"
+                android:id="@+id/txtSSN"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal|left"
+                android:fontFamily="@font/arvo"
+                android:gravity="center"
+                android:text="N"
+                android:textColor="@color/machine_title"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtLabelSex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="0dp"
+                android:alpha="0.70"
+                android:fontFamily="@font/arvo"
+                android:gravity="center"
+                android:text="Sex"
+                android:textColor="#000000"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/txtSex"
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
