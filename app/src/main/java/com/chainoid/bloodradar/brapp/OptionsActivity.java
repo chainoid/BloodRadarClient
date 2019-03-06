@@ -92,7 +92,7 @@ public class OptionsActivity extends AppCompatActivity{
                 if(id==-1){
                     if(position==0){
                         Config.IfGetAllDonors =true;
-                        Intent intent=new Intent(OptionsActivity.this,GetAllProductsActivity.class);
+                        Intent intent=new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==1){
@@ -176,7 +176,7 @@ public class OptionsActivity extends AppCompatActivity{
         dialog.setContentView(R.layout.custom_popup);
 
         Button btnOk=(Button)dialog.findViewById(R.id.btnOk);
-        final EditText txtID=(EditText)dialog.findViewById(R.id.txtID);
+        final EditText txtID=(EditText)dialog.findViewById(R.id.txtName);
         dialog.show();
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,8 +185,8 @@ public class OptionsActivity extends AppCompatActivity{
                     showError();
                 }else{
                     dialog.dismiss();
-                    Config.ProductID=txtID.getText().toString().trim();
-                    Intent intent=new Intent(OptionsActivity.this,GetAllProductsActivity.class);
+                    Config.DonorID =txtID.getText().toString().trim();
+                    Intent intent=new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                 }

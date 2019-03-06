@@ -24,8 +24,8 @@ public class UpdateOwnerActivity extends AppCompatActivity {
 
         txtFeedback=(TextView)findViewById(R.id.txtFeedback);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        txtID=(EditText)findViewById(R.id.txtID);
-        txtOwner=(EditText)findViewById(R.id.txtOwner);
+        txtID=(EditText)findViewById(R.id.txtName);
+        txtOwner=(EditText)findViewById(R.id.txtAddress);
         btnUpdate=(Button)findViewById(R.id.btnOk);
 
         toolbarTitle.setText(Config.mUserType);

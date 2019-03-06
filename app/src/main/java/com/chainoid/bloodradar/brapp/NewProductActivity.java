@@ -24,10 +24,10 @@ public class NewProductActivity extends AppCompatActivity {
 
         txtFeedback=(TextView)findViewById(R.id.txtFeedback);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        txtID=(EditText)findViewById(R.id.txtID);
-        txtOwner=(EditText)findViewById(R.id.txtOwner);
-        txtTS=(EditText)findViewById(R.id.txtTS);
-        txtLocation=(EditText)findViewById(R.id.txtLocation);
+        txtID=(EditText)findViewById(R.id.txtName);
+        txtOwner=(EditText)findViewById(R.id.txtAddress);
+        txtTS=(EditText)findViewById(R.id.txtPhone);
+        txtLocation=(EditText)findViewById(R.id.txtAddress);
         txtUID=(EditText)findViewById(R.id.txtUniqueID);
         validateData();
         btnCreate=(Button)findViewById(R.id.btnOk);
@@ -57,7 +57,7 @@ public class NewProductActivity extends AppCompatActivity {
     private void createProduct(){
         String uri=txtID.getText().toString().trim()+"-"+txtLocation.getText().toString().trim()+"-"+
                    txtTS.getText().toString().trim()+"-"+txtOwner.getText().toString().trim()+"-"+txtUID.getText().toString().trim();
-        final String URL_CREATE_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/add_tuna/"+uri;
+        final String URL_CREATE_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/add_donor/"+uri;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog progressDialog;
             @Override

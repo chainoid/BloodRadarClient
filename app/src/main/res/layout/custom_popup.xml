@@ -34,7 +34,7 @@
             android:gravity="center_vertical"
             android:textSize="18dp"/>
         <EditText
-            android:id="@+id/txtID"
+            android:id="@+id/txtName"
             android:layout_marginLeft="30dp"
             android:layout_width="100dp"
             android:layout_height="match_parent"

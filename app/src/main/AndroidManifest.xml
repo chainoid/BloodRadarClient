@@ -40,7 +40,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme2" />
         <activity
-            android:name="com.chainoid.bloodradar.brapp.GetAllProductsActivity"
+            android:name="com.chainoid.bloodradar.brapp.GetAllDonorsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme2" />
         <activity

@@ -11,26 +11,30 @@ import android.widget.TextView;
 
 public class GetAllRecyclerAdapter extends RecyclerView.Adapter<GetAllRecyclerAdapter.MyViewHolder>{
     private Context mContext;
-    private String[] productID;
+    private String[] donorID;
     private String[] owner;
-    private String[] timestamp;
-    private String[] location;
+    private String[] phone;
+    private String[] address;
+    private String[] age;
+
     private String[] uniqueID;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView txtOwner;
-        public TextView txtLocation;
-        public TextView txtTS;
+        public TextView txtAddress;
+        public TextView txtPhone;
         public TextView txtUniqueID;
-        public TextView txtProductID;
+        public TextView txtDonorID;
+        public TextView txtAge;
 
         public MyViewHolder(View view) {
             super(view);
-            txtOwner = (TextView) view.findViewById(R.id.txtOwner);
-            txtLocation = (TextView) view.findViewById(R.id.txtLocation);
-            txtTS = (TextView) view.findViewById(R.id.txtTS);
+            txtOwner = (TextView) view.findViewById(R.id.txtAddress);
+            txtAddress = (TextView) view.findViewById(R.id.txtAddress);
+            txtPhone = (TextView) view.findViewById(R.id.txtPhone);
             txtUniqueID = (TextView) view.findViewById(R.id.txtUniqueID);
-            txtProductID = (TextView) view.findViewById(R.id.txtProductID);
+            txtDonorID = (TextView) view.findViewById(R.id.txtDonorID);
+            txtAge = (TextView) view.findViewById(R.id.txtAge);
         }
     }
 
@@ -42,28 +46,30 @@ public class GetAllRecyclerAdapter extends RecyclerView.Adapter<GetAllRecyclerAd
         return new MyViewHolder(itemView);
     }
 
-    public GetAllRecyclerAdapter(String[] productID,String[] owner,String[] timestamp,String[] location,String[] uniqueID,Context context) {
-        this.productID = productID;
+    public GetAllRecyclerAdapter(String[] productID,String[] owner,String[] timestamp,String[] location,String[] uniqueID, String[] age, Context context) {
+        this.donorID = productID;
         this.mContext=context;
         this.owner=owner;
-        this.timestamp=timestamp;
-        this.location=location;
+        this.phone =timestamp;
+        this.address=location;
         this.uniqueID=uniqueID;
+        this.age = age;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.txtOwner.setText(owner[position]);
-        holder.txtLocation.setText(location[position]);
-        holder.txtProductID.setText(productID[position]);
-        holder.txtTS.setText(timestamp[position]);
+        holder.txtAddress.setText(address[position]);
+        holder.txtDonorID.setText(donorID[position]);
+        holder.txtPhone.setText(phone[position]);
         holder.txtUniqueID.setText(uniqueID[position]);
+        holder.txtAge.setText(age[position]);
         animate(holder,mContext);
     }
 
     @Override
     public int getItemCount() {
-        return productID.length;
+        return donorID.length;
     }
 
     public void animate(RecyclerView.ViewHolder viewHolder,Context context) {

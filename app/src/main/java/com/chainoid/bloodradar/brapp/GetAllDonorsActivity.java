@@ -18,14 +18,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class GetAllProductsActivity extends AppCompatActivity {
+public class GetAllDonorsActivity extends AppCompatActivity {
 
     private String JSON_STRING;
-    private String[] productID;
-    private String[] owner;
-    private String[] location;
-    private String[] timestamp;
-    private String[] uniqueID;
+    private String[] donorID;
+    private String[] name;
+    private String[] address;
+    private String[] phone;
+    private String[] ssn;
+    private String[] age;
     private TextView toolbarTitle;
     private ImageView imgLogout;
     private RecyclerView mRecyclerView;
@@ -59,15 +60,19 @@ public class GetAllProductsActivity extends AppCompatActivity {
             }
         });
         if(Config.IfGetAllDonors){
-            getAllProducts();
+            getAllDonors();
         }else{
-            getSingleProduct();
+            getSingleDonor();
         }
 
     }
 
-    public void getAllProducts(){
-        final String URL_GET_ALL_PRODUCTS="http://"+Config.ServerIP+":"+Config.Port+"/get_all_tuna";
+    public void getAllDonors(){
+
+
+        System.out.println("Get all donors");
+
+        final String URL_GET_ALL_PRODUCTS="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype"+Config.Btype;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -86,41 +91,43 @@ public class GetAllProductsActivity extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 JSON_STRING = s;
-                getAllProductsResult();
-                setAllProducts();
+                getAllDonorsResult();
+                setAllDonors();
             }
         }
         GetJSON gj = new GetJSON();
         gj.execute();
     }
 
-    private void getAllProductsResult(){
+    private void getAllDonorsResult(){
         JSONObject jsonObject = null;
         try {
             JSONArray result = new JSONArray(JSON_STRING);
-            productID=new String[result.length()];
-            uniqueID=new String[result.length()];
-            owner=new String[result.length()];
-            timestamp=new String[result.length()];
-            location=new String[result.length()];
+            donorID =new String[result.length()];
+            ssn =new String[result.length()];
+            name =new String[result.length()];
+            phone =new String[result.length()];
+            address =new String[result.length()];
 
             for(int i = 0; i<result.length(); i++){
                 JSONObject jo = result.getJSONObject(i);
                 try {
-                    productID[i]=jo.getString("Key");
+                    donorID[i]=jo.getString("Key");
                     String Record=jo.getString("Record");
                     try{
                         JSONObject joRecord=new JSONObject(Record);
-                        owner[i]=joRecord.getString("holder");
-                        location[i]=joRecord.getString("location");
-                        timestamp[i]=joRecord.getString("timestamp");
-                        uniqueID[i]=joRecord.getString("vessel");
+                        name[i]=joRecord.getString("name");
+                        address[i]=joRecord.getString("address");
+                        phone[i]=joRecord.getString("phone");
+                        ssn[i]=joRecord.getString("ssn");
+                        age[i]=joRecord.getString("age");
 
                     }catch (Exception e){
-                        owner[i]="-";
-                        location[i]="-";
-                        timestamp[i]="-";
-                        uniqueID[i]="-";
+                        name[i]="-";
+                        address[i]="-";
+                        phone[i]="-";
+                        ssn[i]="-";
+                        age[i]="-";
                     }
                 }
                 catch(JSONException e)
@@ -135,8 +142,8 @@ public class GetAllProductsActivity extends AppCompatActivity {
         }
     }
 
-    private void setAllProducts(){
-        mAdapter = new GetAllRecyclerAdapter(productID,owner,timestamp,location,uniqueID,context);
+    private void setAllDonors(){
+        mAdapter = new GetAllRecyclerAdapter(donorID, name, phone, address, ssn, age, context);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -147,7 +154,7 @@ public class GetAllProductsActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loadingDialog = ProgressDialog.show(GetAllProductsActivity.this, "Please wait", "Logging out...");
+                loadingDialog = ProgressDialog.show(GetAllDonorsActivity.this, "Please wait", "Logging out...");
             }
 
             @Override
@@ -156,7 +163,7 @@ public class GetAllProductsActivity extends AppCompatActivity {
                 if (loadingDialog!=null && loadingDialog.isShowing())
                 {
                     loadingDialog.dismiss();
-                    Intent intent = new Intent(GetAllProductsActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(GetAllDonorsActivity.this, LoginActivity.class);
                     finish();
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -186,8 +193,8 @@ public class GetAllProductsActivity extends AppCompatActivity {
 
     }
 
-    public void getSingleProduct(){
-        final String URL_GET_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/get_tuna/"+Config.ProductID;
+    public void getSingleDonor(){
+        final String URL_GET_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/get_donor_by_id/"+Config.TempID;
         class GetJSONProduct extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -207,7 +214,7 @@ public class GetAllProductsActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 JSON_STRING = s;
                 getProductResult();
-                setAllProducts();
+                setAllDonors();
             }
         }
         GetJSONProduct gjp = new GetJSONProduct();
@@ -218,30 +225,34 @@ public class GetAllProductsActivity extends AppCompatActivity {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(JSON_STRING);
-            productID=new String[1];
-            uniqueID=new String[1];
-            owner=new String[1];
-            timestamp=new String[1];
-            location=new String[1];
+            donorID =new String[1];
+            ssn =new String[1];
+            name =new String[1];
+            phone =new String[1];
+            address =new String[1];
+            age =new String[1];
 
-            productID[0]=Config.ProductID;
-            owner[0]=jsonObject.getString("holder");
-            location[0]=jsonObject.getString("location");
-            timestamp[0]=jsonObject.getString("timestamp");
-            uniqueID[0]=jsonObject.getString("vessel");
+
+            donorID[0]=Config.DonorID;
+            name[0]=jsonObject.getString("name");
+            address[0]=jsonObject.getString("address");
+            phone[0]=jsonObject.getString("phone");
+            ssn[0]=jsonObject.getString("ssn");
+            age[0]=jsonObject.getString("age");
 
 
         } catch (JSONException e) {
-            owner[0]="-";
-            location[0]="-";
-            timestamp[0]="-";
-            uniqueID[0]="-";
+            name[0]="-";
+            address[0]="-";
+            phone[0]="-";
+            ssn[0]="-";
+            age[0]="-";
         }
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(GetAllProductsActivity.this, OptionsActivity.class);
+        Intent intent = new Intent(GetAllDonorsActivity.this, OptionsActivity.class);
         finish();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
