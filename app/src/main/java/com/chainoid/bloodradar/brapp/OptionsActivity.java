@@ -103,7 +103,7 @@ public class OptionsActivity extends AppCompatActivity{
                         launchActivity(ScannerActivity.class);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==3){
-                        Intent intent=new Intent(OptionsActivity.this,NewProductActivity.class);
+                        Intent intent=new Intent(OptionsActivity.this, AddDonorActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==4){

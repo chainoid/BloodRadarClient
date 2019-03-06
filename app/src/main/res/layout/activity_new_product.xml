@@ -100,11 +100,11 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/txtWarn"
+            android:id="@+id/txtNameLabel"
             android:layout_width="110dp"
             android:layout_height="match_parent"
             android:layout_marginTop="-5dp"
-            android:text="Donor Name :"
+            android:text="Name :"
             android:textColor="#000000"
             android:fontFamily="@font/ubuntu_medium"
             android:gravity="center_vertical"
@@ -128,7 +128,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/txtPortName"
+            android:id="@+id/txtAddressLabel"
             android:layout_width="110dp"
             android:layout_height="match_parent"
             android:layout_marginTop="-5dp"
@@ -143,7 +143,7 @@
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:hint="E.g. Vikas"
+            android:hint="E.g. Second str., 56"
             android:textSize="18dp"
             android:textCursorDrawable="@null"
             android:fontFamily="@font/ubuntu_light"
@@ -156,7 +156,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/txttsName"
+            android:id="@+id/txtPhoneLabel"
             android:layout_width="110dp"
             android:layout_height="match_parent"
             android:layout_marginTop="-5dp"
@@ -184,7 +184,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/txtLocName"
+            android:id="@+id/txtSSNLabel"
             android:layout_width="110dp"
             android:layout_height="match_parent"
             android:layout_marginTop="-5dp"
@@ -200,7 +200,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="18dp"
-            android:hint="E.g. 12345678"
+            android:hint="E.g. 34380668"
             android:textCursorDrawable="@null"
             android:fontFamily="@font/ubuntu_light"
             android:background="@drawable/edit_text_bg"/>
@@ -212,7 +212,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/txtUIDName"
+            android:id="@+id/txtAgeLabel"
             android:layout_width="110dp"
             android:layout_height="match_parent"
             android:layout_marginTop="-5dp"
@@ -228,7 +228,63 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="18dp"
-            android:hint="E.g. 33"
+            android:hint="E.g. 21"
+            android:textCursorDrawable="@null"
+            android:fontFamily="@font/ubuntu_light"
+            android:background="@drawable/edit_text_bg"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtSexLabel"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:text="Sex :"
+            android:textColor="#000000"
+            android:fontFamily="@font/ubuntu_medium"
+            android:gravity="center_vertical"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/txtSex"
+            android:layout_marginLeft="30dp"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:hint="E.g. Male"
+            android:textCursorDrawable="@null"
+            android:fontFamily="@font/ubuntu_light"
+            android:background="@drawable/edit_text_bg"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtBtypeName"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:text="Blood type :"
+            android:textColor="#000000"
+            android:fontFamily="@font/ubuntu_medium"
+            android:gravity="center_vertical"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/txtBtype"
+            android:layout_marginLeft="30dp"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:hint="E.g. Apos"
             android:textCursorDrawable="@null"
             android:fontFamily="@font/ubuntu_light"
             android:background="@drawable/edit_text_bg"/>

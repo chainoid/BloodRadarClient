@@ -11,9 +11,18 @@ import android.widget.TextView;
 
 import com.nispok.snackbar.Snackbar;
 
-public class NewProductActivity extends AppCompatActivity {
+public class AddDonorActivity extends AppCompatActivity {
     private TextView toolbarTitle,txtFeedback;
-    private EditText txtOwner,txtTS,txtLocation,txtID,txtUID;
+    private EditText txtName;
+    private EditText txtAddress;
+    private EditText txtPhone;
+    private EditText txtSSN;
+    private EditText txtAge;
+    private EditText txtSex;
+    private EditText txtBtype;
+
+
+
     private Button btnCreate;
     private String JSON_STRING;
 
@@ -24,11 +33,14 @@ public class NewProductActivity extends AppCompatActivity {
 
         txtFeedback=(TextView)findViewById(R.id.txtFeedback);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        txtID=(EditText)findViewById(R.id.txtName);
-        txtOwner=(EditText)findViewById(R.id.txtAddress);
-        txtTS=(EditText)findViewById(R.id.txtPhone);
-        txtLocation=(EditText)findViewById(R.id.txtAddress);
-        txtUID=(EditText)findViewById(R.id.txtSSN);
+        txtName=(EditText)findViewById(R.id.txtName);
+        txtAddress=(EditText)findViewById(R.id.txtAddress);
+        txtPhone =(EditText)findViewById(R.id.txtPhone);
+        txtSSN =(EditText)findViewById(R.id.txtSSN);
+        txtAge =(EditText)findViewById(R.id.txtAge);
+        txtSex =(EditText)findViewById(R.id.txtSex);
+        txtBtype =(EditText)findViewById(R.id.txtBtype);
+
         validateData();
         btnCreate=(Button)findViewById(R.id.btnOk);
 
@@ -45,9 +57,10 @@ public class NewProductActivity extends AppCompatActivity {
     }
 
     private void validateData(){
-        if(txtID.getText().toString().equals("")||txtLocation.getText().toString().equals("")||
-                txtOwner.getText().toString().equals("")||txtTS.getText().toString().equals("")||
-                txtUID.getText().toString().equals("")){
+        if(txtName.getText().toString().equals("")|| txtAddress.getText().toString().equals("")||
+                txtPhone.getText().toString().equals("")|| txtSSN.getText().toString().equals("")||
+                txtAge.getText().toString().equals("")|| txtSex.getText().toString().equals("")||
+                txtBtype.getText().toString().equals("")){
             Snackbar.with(getApplicationContext()).text("All fields are mandatory").show(this);
         }else{
             createProduct();
@@ -55,14 +68,15 @@ public class NewProductActivity extends AppCompatActivity {
     }
 
     private void createProduct(){
-        String uri=txtID.getText().toString().trim()+"-"+txtLocation.getText().toString().trim()+"-"+
-                   txtTS.getText().toString().trim()+"-"+txtOwner.getText().toString().trim()+"-"+txtUID.getText().toString().trim();
+        String uri=txtName.getText().toString().trim()+"-"+ txtAddress.getText().toString().trim()+"-"+
+                   txtPhone.getText().toString().trim()+"-"+ txtSSN.getText().toString().trim()+"-"+
+                   txtAge.getText().toString().trim()+"-"+ txtSex.getText().toString().trim()+"-"+txtBtype.getText().toString().trim();
         final String URL_CREATE_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/add_donor/"+uri;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog progressDialog;
             @Override
             protected void onPreExecute() {
-                progressDialog=new ProgressDialog(NewProductActivity.this);
+                progressDialog=new ProgressDialog(AddDonorActivity.this);
                 progressDialog.setMessage("Submitting Transaction");
                 progressDialog.show();
                 super.onPreExecute();
