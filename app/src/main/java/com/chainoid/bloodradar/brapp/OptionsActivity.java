@@ -107,7 +107,7 @@ public class OptionsActivity extends AppCompatActivity{
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==4){
-                        Intent intent=new Intent(OptionsActivity.this,UpdateOwnerActivity.class);
+                        Intent intent=new Intent(OptionsActivity.this, UpdateDonorActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }

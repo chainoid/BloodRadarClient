@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 import com.nispok.snackbar.Snackbar;
 
-public class UpdateOwnerActivity extends AppCompatActivity {
-    private TextView toolbarTitle,txtFeedback;
-    private EditText txtOwner,txtID;
+public class UpdateDonorActivity extends AppCompatActivity {
+    private TextView toolbarTitle;
+    private TextView txtFeedback;
+    private EditText txtOwner;
+    private EditText txtID;
     private Button btnUpdate;
     private String JSON_STRING;
 
@@ -44,18 +46,18 @@ public class UpdateOwnerActivity extends AppCompatActivity {
         if(txtID.getText().toString().equals("") || txtOwner.getText().toString().equals("")){
             Snackbar.with(getApplicationContext()).text("All fields are mandatory").show(this);
         }else{
-            updateProduct();
+            updateDonor();
         }
     }
 
-    private void updateProduct(){
+    private void updateDonor(){
         String uri=txtID.getText().toString().trim()+"-"+txtOwner.getText().toString().trim();
-        final String URL_CREATE_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/change_holder/"+uri;
+        final String URL_UPDATE_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/update_donor/"+uri;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog progressDialog;
             @Override
             protected void onPreExecute() {
-                progressDialog=new ProgressDialog(UpdateOwnerActivity.this);
+                progressDialog=new ProgressDialog(UpdateDonorActivity.this);
                 progressDialog.setMessage("Submitting Transaction");
                 progressDialog.show();
                 super.onPreExecute();
@@ -66,7 +68,7 @@ public class UpdateOwnerActivity extends AppCompatActivity {
                 RequestHandler rh = new RequestHandler();
                 String s;
                 try{
-                    s = rh.sendGetRequest(URL_CREATE_PRODUCT);
+                    s = rh.sendGetRequest(URL_UPDATE_DONOR);
                 }catch (Exception e){
                     s="";
                     progressDialog.dismiss();

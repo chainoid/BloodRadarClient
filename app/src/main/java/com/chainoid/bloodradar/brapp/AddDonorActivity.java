@@ -21,15 +21,13 @@ public class AddDonorActivity extends AppCompatActivity {
     private EditText txtSex;
     private EditText txtBtype;
 
-
-
     private Button btnCreate;
     private String JSON_STRING;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_product);
+        setContentView(R.layout.activity_add_donor);
 
         txtFeedback=(TextView)findViewById(R.id.txtFeedback);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
@@ -71,7 +69,7 @@ public class AddDonorActivity extends AppCompatActivity {
         String uri=txtName.getText().toString().trim()+"-"+ txtAddress.getText().toString().trim()+"-"+
                    txtPhone.getText().toString().trim()+"-"+ txtSSN.getText().toString().trim()+"-"+
                    txtAge.getText().toString().trim()+"-"+ txtSex.getText().toString().trim()+"-"+txtBtype.getText().toString().trim();
-        final String URL_CREATE_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/add_donor/"+uri;
+        final String URL_ADD_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/add_donor/"+uri;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog progressDialog;
             @Override
@@ -87,7 +85,7 @@ public class AddDonorActivity extends AppCompatActivity {
                 RequestHandler rh = new RequestHandler();
                 String s;
                 try{
-                    s = rh.sendGetRequest(URL_CREATE_PRODUCT);
+                    s = rh.sendGetRequest(URL_ADD_DONOR);
                 }catch (Exception e){
                     s="";
                     progressDialog.dismiss();
