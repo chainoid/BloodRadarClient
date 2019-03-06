@@ -58,7 +58,7 @@ public class GetAllProductsActivity extends AppCompatActivity {
                 logout();
             }
         });
-        if(Config.IfGetAllProducts){
+        if(Config.IfGetAllDonors){
             getAllProducts();
         }else{
             getSingleProduct();

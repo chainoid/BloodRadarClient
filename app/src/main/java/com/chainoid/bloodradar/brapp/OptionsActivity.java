@@ -62,7 +62,7 @@ public class OptionsActivity extends AppCompatActivity{
             optionsIcon[2]=R.mipmap.ic_qr;
             optionsIcon[3]=R.mipmap.ic_create;
             optionsIcon[4]=R.mipmap.ic_update;
-        }else if(Config.mUserType.toLowerCase().equals("regulator")){
+        }else if(Config.mUserType.toLowerCase().equals("donor")){
             optionsList=getResources().getStringArray(R.array.regulatorOptions);
             optionsIcon=new Integer[3];
             optionsIcon[0]=R.mipmap.ic_get_all;
@@ -91,15 +91,15 @@ public class OptionsActivity extends AppCompatActivity{
             public void onRecyclerViewItemClicked(int position, int id) {
                 if(id==-1){
                     if(position==0){
-                        Config.IfGetAllProducts=true;
+                        Config.IfGetAllDonors =true;
                         Intent intent=new Intent(OptionsActivity.this,GetAllProductsActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==1){
-                        Config.IfGetAllProducts=false;
+                        Config.IfGetAllDonors =false;
                         showCustomDialog();
                     }else if(position==2){
-                        Config.IfGetAllProducts=false;
+                        Config.IfGetAllDonors =false;
                         launchActivity(ScannerActivity.class);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==3){
