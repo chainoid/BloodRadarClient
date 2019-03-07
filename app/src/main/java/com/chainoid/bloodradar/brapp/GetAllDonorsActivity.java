@@ -204,7 +204,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
     }
 
     public void getSingleDonor(){
-        final String URL_GET_PRODUCT="http://"+Config.ServerIP+":"+Config.Port+"/get_donor_by_id/"+Config.TempID;
+        final String URL_GET_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/get_donor_by_id/"+Config.DonorID;
         class GetJSONProduct extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -215,7 +215,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(URL_GET_PRODUCT);
+                String s = rh.sendGetRequest(URL_GET_DONOR);
                 return s;
             }
 
