@@ -92,9 +92,10 @@ public class OptionsActivity extends AppCompatActivity{
                 if(id==-1){
                     if(position==0){
                         Config.IfGetAllDonors =true;
-                        Intent intent=new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                        //Intent intent=new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
+                        showSelectDialog();
+                        //startActivity(intent);
+                        //overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==1){
                         Config.IfGetAllDonors =false;
                         showCustomDialog();
@@ -197,6 +198,39 @@ public class OptionsActivity extends AppCompatActivity{
     private void showError(){
         Snackbar.with(getApplicationContext()).text("Product ID cannot be empty").show(this);
     }
+
+
+    private void showSelectDialog(){
+        // Create custom dialog object
+        final Dialog dialog = new Dialog(OptionsActivity.this);
+        // remove dialog title
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // Include custom_dialog.xml file
+        dialog.setContentView(R.layout.select_popup);
+
+        Button btnOk=(Button)dialog.findViewById(R.id.btnOk);
+        final EditText txtID=(EditText)dialog.findViewById(R.id.txtType);
+        dialog.show();
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txtID.getText().toString().equals("")){
+                    showSelectError();
+                }else{
+                    dialog.dismiss();
+                    Config.Btype =txtID.getText().toString().trim();
+                    Intent intent=new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                }
+            }
+        });
+    }
+
+    private void showSelectError(){
+        Snackbar.with(getApplicationContext()).text("Selected blood type cannot be empty").show(this);
+    }
+
 
     public void launchActivity(Class<?> clss) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)

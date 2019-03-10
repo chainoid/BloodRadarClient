@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BloodRadarApp</string>
     <string-array name="adminOptions">
-        <item>Query all Donors</item>
+        <item>Query Donors by blood type</item>
         <item>Get a Donor by its ID</item>
         <item>Get a Donor by scanning QR</item>
         <item>Add Donor</item>
@@ -11,5 +11,16 @@
         <item>Query all Donors</item>
         <item>Get a Donor by its ID</item>
         <item>Get a Donor by scanning QR</item>
+    </string-array>
+
+    <string-array name="btype_array">
+        <item>Apos</item>
+        <item>Bpos</item>
+        <item>ABpos</item>
+        <item>Opos</item>
+        <item>Aneg</item>
+        <item>Bneg</item>
+        <item>ABneg</item>
+        <item>Oneg</item>
     </string-array>
 </resources>
