@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nispok.snackbar.Snackbar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,7 +74,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
     public void getAllDonors(){
 
 
-        final String URL_GET_ALL_PRODUCTS="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype/"+Config.Btype;
+        final String URL_GET_DONORS_BY_BTYPE="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype/"+Config.Btype;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -83,7 +85,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(URL_GET_ALL_PRODUCTS);
+                String s = rh.sendGetRequest(URL_GET_DONORS_BY_BTYPE);
                 return s;
             }
 
@@ -91,8 +93,13 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 JSON_STRING = s;
-                getAllDonorsResult();
-                setAllDonors();
+
+                if (s != null && s.length() > 0 ) {
+                    getAllDonorsResult();
+                    setAllDonors();
+                } else {
+                    showDonorError();
+                }
             }
         }
         GetJSON gj = new GetJSON();
@@ -149,6 +156,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            showDonorError();
         }
     }
 
@@ -223,8 +231,14 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 JSON_STRING = s;
-                getDonorResult();
-                setAllDonors();
+
+                if (s != null && s.length() > 0 ) {
+                    getDonorResult();
+                    setAllDonors();
+                } else {
+                    showDonorError();
+                }
+
             }
         }
         GetJSONProduct gjp = new GetJSONProduct();
@@ -264,6 +278,14 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             btype[0]="-";
         }
     }
+
+
+
+    private void showDonorError(){
+       Snackbar.with(getApplicationContext()).text("Cannot load data for this donor(s).").show(this);
+    }
+
+
 
     @Override
     public void onBackPressed() {

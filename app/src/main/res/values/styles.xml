@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
@@ -17,6 +17,6 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/bg_light</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
-    </style>
+     </style>
 
 </resources>
