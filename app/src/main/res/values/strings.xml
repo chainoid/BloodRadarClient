@@ -5,9 +5,16 @@
         <item>Get a Donor by its ID</item>
         <item>Get a Donor by scanning QR</item>
         <item>Add Donor</item>
-        <item>Update Donor Profile</item>
+        <!--item>Update Donor Profile</item-->
     </string-array>
-    <string-array name="regulatorOptions">
+
+    <string-array name="donorOptions">
+        <!--item>Get Donor profile</item-->
+        <item>Get a Donor profile by its ID</item>
+        <item>Get a Donor profile by scanning QR</item>
+    </string-array>
+
+    <string-array name="hospitalOptions">
         <item>Query all Donors</item>
         <item>Get a Donor by its ID</item>
         <item>Get a Donor by scanning QR</item>

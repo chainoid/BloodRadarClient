@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,11 +16,10 @@ import android.widget.TextView;
 
 import com.nispok.snackbar.Snackbar;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class GetAllDonorsActivity extends AppCompatActivity {
+public class DonorProfileActivity extends AppCompatActivity {
 
     private String JSON_STRING;
     private String[] donorID;
@@ -34,17 +33,17 @@ public class GetAllDonorsActivity extends AppCompatActivity {
     private TextView toolbarTitle;
     private ImageView imgLogout;
     private RecyclerView mRecyclerView;
-    private GetAllRecyclerAdapter mAdapter;
+    private GetProfileRecyclerAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Context context=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_all_donors);
+        setContentView(R.layout.activity_get_donor_profile);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         imgLogout=(ImageView)findViewById(R.id.imgLogout);
-        mRecyclerView = (RecyclerView) findViewById(R.id.get_products_recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.get_donor_profile_view);
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -63,105 +62,16 @@ public class GetAllDonorsActivity extends AppCompatActivity {
                 logout();
             }
         });
-        if(Config.IfGetAllDonors){
-            getAllDonors();
-        }else{
-            getSingleDonor();
-        }
+
+        // Only one case there
+        getDonorProfile();
 
     }
 
-    public void getAllDonors(){
 
-
-        final String URL_GET_DONORS_BY_BTYPE="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype/"+Config.Btype;
-        class GetJSON extends AsyncTask<Void,Void,String> {
-            ProgressDialog loading;
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-                RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(URL_GET_DONORS_BY_BTYPE);
-                return s;
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                JSON_STRING = s;
-
-                if (s != null && s.length() > 0 ) {
-                    getAllDonorsResult();
-                    setAllDonors();
-                } else {
-                    showDonorError();
-                }
-            }
-        }
-        GetJSON gj = new GetJSON();
-        gj.execute();
-    }
-
-    private void getAllDonorsResult(){
-        JSONObject jsonObject = null;
-        try {
-            JSONArray result = new JSONArray(JSON_STRING);
-            donorID =new String[result.length()];
-            ssn =new String[result.length()];
-            name =new String[result.length()];
-            phone =new String[result.length()];
-            address =new String[result.length()];
-            age = new String[result.length()];
-            sex = new String[result.length()];
-            btype = new String[result.length()];
-
-
-            for(int i = 0; i<result.length(); i++){
-                JSONObject jo = result.getJSONObject(i);
-                try {
-                    donorID[i]=jo.getString("Key");
-
-                    String Record=jo.getString("Record");
-                    try{
-                        JSONObject joRecord=new JSONObject(Record);
-                        name[i]=joRecord.getString("name");
-                        address[i]=joRecord.getString("address");
-                        phone[i]=joRecord.getString("phone");
-                        ssn[i]=joRecord.getString("ssn");
-                        age[i]=joRecord.getString("age");
-                        sex[i]=joRecord.getString("sex");
-                        btype[i]=joRecord.getString("btype");
-
-                    }catch (Exception e){
-                        name[i]="-";
-                        address[i]="-";
-                        phone[i]="-";
-                        ssn[i]="-";
-                        age[i]="-";
-                        sex[i]="-";
-                        btype[i]="-";
-                    }
-
-                }
-                catch(JSONException e)
-                {
-                    e.printStackTrace();
-                }
-
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            showDonorError();
-        }
-    }
 
     private void setAllDonors(){
-        mAdapter = new GetAllRecyclerAdapter(donorID, name, phone, address, ssn, age, sex, context);
+        mAdapter = new GetProfileRecyclerAdapter(donorID, name, phone, address, ssn, age, sex, context);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -172,7 +82,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loadingDialog = ProgressDialog.show(GetAllDonorsActivity.this, "Please wait", "Logging out...");
+                loadingDialog = ProgressDialog.show(DonorProfileActivity.this, "Please wait", "Logging out...");
             }
 
             @Override
@@ -181,7 +91,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
                 if (loadingDialog!=null && loadingDialog.isShowing())
                 {
                     loadingDialog.dismiss();
-                    Intent intent = new Intent(GetAllDonorsActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(DonorProfileActivity.this, LoginActivity.class);
                     finish();
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -211,7 +121,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
 
     }
 
-    public void getSingleDonor(){
+    public void getDonorProfile(){
         final String URL_GET_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/get_donor_by_id/"+Config.DonorID;
         class GetJSONProduct extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
@@ -289,7 +199,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(GetAllDonorsActivity.this, OptionsActivity.class);
+        Intent intent = new Intent(DonorProfileActivity.this, OptionsActivity.class);
         finish();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

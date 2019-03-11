@@ -9,7 +9,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-public class GetAllRecyclerAdapter extends RecyclerView.Adapter<GetAllRecyclerAdapter.MyViewHolder>{
+import static com.chainoid.bloodradar.brapp.R.layout.donor_profile_layout;
+
+public class GetProfileRecyclerAdapter extends RecyclerView.Adapter<GetProfileRecyclerAdapter.MyViewHolder>{
     private Context mContext;
     private String[] donorID;
     private String[] name;
@@ -46,12 +48,12 @@ public class GetAllRecyclerAdapter extends RecyclerView.Adapter<GetAllRecyclerAd
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.get_donors_layout, parent, false);
+                .inflate(donor_profile_layout, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
-    public GetAllRecyclerAdapter(String[] donorID, String[] name, String[] phone, String[] address, String[] ssn, String[] age, String[] sex, Context context) {
+    public GetProfileRecyclerAdapter(String[] donorID, String[] name, String[] phone, String[] address, String[] ssn, String[] age, String[] sex, Context context) {
         this.donorID = donorID;
         this.mContext=context;
         this.name = name;
