@@ -70,20 +70,27 @@ public class OptionsActivity extends AppCompatActivity{
             optionsIcon[2]=R.mipmap.ic_get_all;
         }else if(Config.mUserType.toLowerCase().equals("hospital")){
             optionsList=getResources().getStringArray(R.array.hospitalOptions);
-            optionsIcon=new Integer[3];
+            optionsIcon=new Integer[4];
             optionsIcon[0]=R.mipmap.ic_get_all;
             optionsIcon[1]=R.mipmap.ic_get_one;
             optionsIcon[2]=R.mipmap.ic_qr;
+            optionsIcon[3]=R.mipmap.ic_get_one;
         }else if(Config.mUserType.toLowerCase().equals("camp")){
-            optionsList=getResources().getStringArray(R.array.hospitalOptions);
-            optionsIcon=new Integer[3];
+            optionsList=getResources().getStringArray(R.array.campOptions);
+            optionsIcon=new Integer[4];
             optionsIcon[0]=R.mipmap.ic_get_all;
             optionsIcon[1]=R.mipmap.ic_get_one;
             optionsIcon[2]=R.mipmap.ic_qr;
+            optionsIcon[3]=R.mipmap.ic_get_one;
+        }else if(Config.mUserType.toLowerCase().equals("bank")){
+            optionsList=getResources().getStringArray(R.array.bankOptions);
+            optionsIcon=new Integer[5];
+            optionsIcon[0]=R.mipmap.ic_get_all;
+            optionsIcon[1]=R.mipmap.ic_get_one;
+            optionsIcon[2]=R.mipmap.ic_qr;
+            optionsIcon[3]=R.mipmap.ic_get_one;
+            optionsIcon[4]=R.mipmap.ic_get_one;
         }
-
-
-
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -145,10 +152,57 @@ public class OptionsActivity extends AppCompatActivity{
                           Config.IfGetAllDonors =false;
                           launchActivity(ScannerActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }else if(position==2){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }else if(position==3){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }
+                  } else if (Config.mUserType.toLowerCase().equals("bank")){
+
+                      if(position==0){
+                          Config.IfGetAllDonors =false;
+                          showCustomDialog();
+                      }else if(position==1){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }else if(position==2){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }else if(position==3){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }else if(position==4){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }
+                  } else if (Config.mUserType.toLowerCase().equals("camp")){
+
+                      if(position==0){
+                          Config.IfGetAllDonors =false;
+                          showCustomDialog();
+                      }else if(position==1){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }else if(position==2){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }else if(position==3){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }
                   }
-
-                }
+             }
             }
         });
     }
