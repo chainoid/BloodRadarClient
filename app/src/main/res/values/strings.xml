@@ -29,7 +29,7 @@
     </string-array>
 
     <string-array name="bankOptions">
-        <item>Query Bpacks by status</item>
+        <item>Query Bpacks by type/status</item>
         <item>Get a Bpack by its ID</item>
         <item>Get a Bpack by scanning QR</item>
         <item>Change status</item>

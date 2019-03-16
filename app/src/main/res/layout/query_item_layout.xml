@@ -8,7 +8,7 @@
     android:layout_marginRight="10dp"
     android:elevation="3dp"
     android:padding="20dp"
-    card_view:cardBackgroundColor="@color/code_yellow"
+    card_view:cardBackgroundColor="@color/disabled_grey"
     card_view:cardCornerRadius="4dp">
     <!-- Content of Recycler View in xxx.xml -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +26,7 @@
         <LinearLayout
             android:layout_width="64dp"
             android:layout_height="119dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="0dp"
             android:baselineAligned="false"
             android:gravity="center_vertical"
@@ -34,41 +34,41 @@
 
 
             <TextView
-                android:id="@+id/txtPhoneLabel"
+                android:id="@+id/txtStatusLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/arvo"
                 android:gravity="left"
-                android:text="Phone"
+                android:text="Status"
                 android:textColor="@color/lightText"
                 android:textSize="12dp" />
 
 
             <TextView
-                android:id="@+id/txtPhone"
+                android:id="@+id/txtStatus"
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="190dp"
                 android:layout_height="32dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/arvo"
-                android:text="Nougat"
+                android:text="status"
                 android:textSize="15dp"
                 tools:targetApi="jelly_bean" />
 
 
             <TextView
-                android:id="@+id/txtAgeLabel"
+                android:id="@+id/txtAmountLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/arvo"
-                android:text="Age"
+                android:text="Amount"
                 android:textColor="@color/lightText"
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/txtAge"
+                android:id="@+id/txtAmount"
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,113 +81,108 @@
                 tools:targetApi="jelly_bean" />
         </LinearLayout>
 
-        <LinearLayout
+        <!--LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:orientation="vertical"-->
+
+        <LinearLayout
+            android:layout_width="167dp"
+            android:layout_height="120dp"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="167dp"
-                android:layout_height="120dp"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_weight="2"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtDonorIDLabel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|left"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="20dp"
-                            android:alpha="0.70"
-                            android:baselineAligned="false"
-                            android:fontFamily="@font/arvo"
-                            android:gravity="center"
-                            android:text="DonorID"
-                            android:textColor="#000000"
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/txtDonorID"
-                            style="@style/TextAppearance.AppCompat.Headline"
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center_horizontal|left"
-                            android:layout_marginLeft="10dp"
-                            android:fontFamily="@font/arvo"
-                            android:gravity="center"
-                            android:text="N"
-                            android:textColor="@color/blueOEE"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!--LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                    </LinearLayout-->
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtAddressLabel"
+                        android:id="@+id/txtDonorIdLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.70"
+                        android:baselineAligned="false"
                         android:fontFamily="@font/arvo"
-                        android:gravity="left"
-                        android:text="Address"
-                        android:textColor="@color/lightText"
+                        android:gravity="center"
+                        android:text="DonorId"
+                        android:textColor="#000000"
                         android:textSize="12dp" />
 
                     <TextView
-                        android:id="@+id/txtAddress"
-                        android:layout_width="220dp"
-                        android:layout_height="30dp"
-                        android:ellipsize="end"
+                        android:id="@+id/txtDonorId"
+                        style="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
                         android:fontFamily="@font/arvo"
-                        android:gravity="left"
-                        android:maxLines="2"
-                        android:text="A family of confections."
-                        android:textColor="#000000"
-                        android:textSize="14dp" />
+                        android:gravity="center"
+                        android:text="N"
+                        android:textColor="@color/blueOEE"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtDonationTSLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arvo"
+                    android:gravity="left"
+                    android:text="Donation TS"
+                    android:textColor="@color/lightText"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/txtDonationTS"
+                    android:layout_width="220dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="left"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/arvo"
+                    android:gravity="left"
+                    android:maxLines="2"
+                    android:text="The time od donation."
+                    android:textColor="#000000"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
         </LinearLayout>
+        <!--/LinearLayout-->
 
         <LinearLayout
-            android:layout_width="90dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="15dp"
-            android:gravity="center"
+            android:layout_width="64dp"
+            android:layout_height="119dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="0dp"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtLabelSSN"
+                android:id="@+id/txtLabelLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -195,12 +190,12 @@
                 android:alpha="0.70"
                 android:fontFamily="@font/arvo"
                 android:gravity="center"
-                android:text="SSN"
+                android:text="Location"
                 android:textColor="#000000"
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/txtSSN"
+                android:id="@+id/txtLocation"
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
@@ -213,7 +208,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtLabelSex"
+                android:id="@+id/txtLabelBtype"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -221,12 +216,12 @@
                 android:alpha="0.70"
                 android:fontFamily="@font/arvo"
                 android:gravity="center"
-                android:text="Sex"
+                android:text="Btype"
                 android:textColor="#000000"
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/txtSex"
+                android:id="@+id/txtBtype"
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"

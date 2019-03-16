@@ -11,35 +11,37 @@ import android.widget.TextView;
 
 public class QueryItemsRecyclerAdapter extends RecyclerView.Adapter<QueryItemsRecyclerAdapter.MyViewHolder>{
     private Context mContext;
-    private String[] donorID;
-    private String[] name;
-    private String[] phone;
-    private String[] address;
-    private String[] ssn;
-    private String[] age;
-    private String[] sex;
+    private String[] bpackId;
+    private String[] btype;
+    private String[] donorId;
+    private String[] donationTS;
+    private String[] amount;
+    private String[] location;
+    private String[] status;
 
-    private String[] uniqueID;
+    //private String[] uniqueID;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtOwner;
-        public TextView txtAddress;
-        public TextView txtPhone;
-        public TextView txtSSN;
-        public TextView txtDonorID;
-        public TextView txtAge;
-        public TextView txtSex;
+
+        public TextView txtBtype;
+        public TextView txtDonorId;
+        public TextView txtDonationTS;
+        public TextView txtAmount;
+        public TextView txtLocation;
+        public TextView txtStatus;
+
 
         public MyViewHolder(View view) {
             super(view);
-         //   txtOwner = (TextView) view.findViewById(R.id.txtAddress);
-            txtAddress = (TextView) view.findViewById(R.id.txtAddress);
-            txtPhone = (TextView) view.findViewById(R.id.txtPhone);
-        //    txtUniqueID = (TextView) view.findViewById(R.id.txtUniqueID);
-            txtDonorID = (TextView) view.findViewById(R.id.txtDonorID);
-            txtAge = (TextView) view.findViewById(R.id.txtAge);
-            txtSSN = (TextView) view.findViewById(R.id.txtSSN);
-            txtSex = (TextView) view.findViewById(R.id.txtSex);
+
+            txtBtype = (TextView) view.findViewById(R.id.txtBtype);
+            txtDonorId = (TextView) view.findViewById(R.id.txtDonorId);
+            txtDonationTS = (TextView) view.findViewById(R.id.txtDonationTS);
+            txtStatus  = (TextView) view.findViewById(R.id.txtStatus);
+            txtLocation = (TextView) view.findViewById(R.id.txtLocation);
+            txtAmount = (TextView) view.findViewById(R.id.txtAmount);
+            txtStatus  = (TextView) view.findViewById(R.id.txtStatus);
+
         }
     }
 
@@ -51,32 +53,37 @@ public class QueryItemsRecyclerAdapter extends RecyclerView.Adapter<QueryItemsRe
         return new MyViewHolder(itemView);
     }
 
-    public QueryItemsRecyclerAdapter(String[] donorID, String[] name, String[] phone, String[] address, String[] ssn, String[] age, String[] sex, Context context) {
-        this.donorID = donorID;
+    public QueryItemsRecyclerAdapter(String[] bpackId, String[] btype, String[] donorId,  String[] donationTS, String[] amount, String[] location, String[] status, Context context) {
+
+        this.bpackId = bpackId;
+        this.btype   = btype;
+        this.donorId = donorId;
+        this.donationTS = donationTS;
+        this.amount = amount;
+        this.location = location;
+        this.status=status;
+
         this.mContext=context;
-        this.name = name;
-        this.phone =phone;
-        this.address=address;
-        this.ssn=ssn;
-        this.age=age;
-        this.sex=sex;
+
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
      //   holder.txtOwner.setText(name[position]);
-        holder.txtAddress.setText(address[position]);
-        holder.txtDonorID.setText(donorID[position]);
-        holder.txtPhone.setText(phone[position]);
-        holder.txtSSN.setText(ssn[position]);
-        holder.txtAge.setText(age[position]);
-        holder.txtSex.setText(sex[position]);
+
+        holder.txtBtype.setText(btype[position]);
+        holder.txtDonorId.setText(donorId[position]);
+        holder.txtDonationTS.setText(donationTS[position]);
+        holder.txtAmount.setText(amount[position]);
+        holder.txtLocation.setText(location[position]);
+        holder.txtStatus.setText(status[position]);
+
         animate(holder,mContext);
     }
 
     @Override
     public int getItemCount() {
-        return donorID.length;
+        return bpackId.length;
     }
 
     public void animate(RecyclerView.ViewHolder viewHolder,Context context) {

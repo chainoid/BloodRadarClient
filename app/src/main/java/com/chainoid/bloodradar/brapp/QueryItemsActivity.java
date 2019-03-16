@@ -23,14 +23,14 @@ import org.json.JSONObject;
 public class QueryItemsActivity extends AppCompatActivity {
 
     private String JSON_STRING;
-    private String[] donorID;
-    private String[] name;
-    private String[] address;
-    private String[] phone;
-    private String[] ssn;
-    private String[] age;
-    private String[] sex;
+    private String[] bpackId;
     private String[] btype;
+    private String[] donorId;
+    private String[] donationTS;
+    private String[] amount;
+    private String[] location;
+    private String[] status;
+
     private TextView toolbarTitle;
     private ImageView imgLogout;
     private RecyclerView mRecyclerView;
@@ -64,17 +64,17 @@ public class QueryItemsActivity extends AppCompatActivity {
             }
         });
         if(Config.IfGetAllDonors){
-            getAllDonors();
+            getAllItems();
         }else{
-            getSingleDonor();
+            getSingleItem();
         }
 
     }
 
-    public void getAllDonors(){
+    public void getAllItems(){
 
 
-        final String URL_GET_DONORS_BY_BTYPE="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype/"+Config.Btype;
+        final String URL_GET_DONORS_BY_BTYPE="http://"+Config.ServerIP+":"+Config.Port+"/query_bpack_by_btype/"+Config.Btype+"-ALL";
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -95,8 +95,8 @@ public class QueryItemsActivity extends AppCompatActivity {
                 JSON_STRING = s;
 
                 if (s != null && s.length() > 0 ) {
-                    getAllDonorsResult();
-                    setAllDonors();
+                    getAllItemsResult();
+                    setAllItems();
                 } else {
                     showDonorError();
                 }
@@ -106,44 +106,42 @@ public class QueryItemsActivity extends AppCompatActivity {
         gj.execute();
     }
 
-    private void getAllDonorsResult(){
+    private void getAllItemsResult(){
         JSONObject jsonObject = null;
+
         try {
             JSONArray result = new JSONArray(JSON_STRING);
-            donorID =new String[result.length()];
-            ssn =new String[result.length()];
-            name =new String[result.length()];
-            phone =new String[result.length()];
-            address =new String[result.length()];
-            age = new String[result.length()];
-            sex = new String[result.length()];
+            bpackId =new String[result.length()];
             btype = new String[result.length()];
+            donorId =new String[result.length()];
+            donationTS =new String[result.length()];
+            amount =new String[result.length()];
+            location =new String[result.length()];
+            status = new String[result.length()];
 
 
             for(int i = 0; i<result.length(); i++){
                 JSONObject jo = result.getJSONObject(i);
                 try {
-                    donorID[i]=jo.getString("Key");
+                    bpackId[i]=jo.getString("Key");
 
                     String Record=jo.getString("Record");
                     try{
                         JSONObject joRecord=new JSONObject(Record);
-                        name[i]=joRecord.getString("name");
-                        address[i]=joRecord.getString("address");
-                        phone[i]=joRecord.getString("phone");
-                        ssn[i]=joRecord.getString("ssn");
-                        age[i]=joRecord.getString("age");
-                        sex[i]=joRecord.getString("sex");
                         btype[i]=joRecord.getString("btype");
+                        donorId[i]=joRecord.getString("donorId");
+                        donationTS[i]=joRecord.getString("donationTS");
+                        amount[i]=joRecord.getString("amount");
+                        location[i]=joRecord.getString("location");
+                        status[i]=joRecord.getString("status");
 
                     }catch (Exception e){
-                        name[i]="-";
-                        address[i]="-";
-                        phone[i]="-";
-                        ssn[i]="-";
-                        age[i]="-";
-                        sex[i]="-";
                         btype[i]="-";
+                        donorId[i]="-";
+                        donationTS[i]="-";
+                        amount[i]="-";
+                        location[i]="-";
+                        status[i]="-";
                     }
 
                 }
@@ -160,8 +158,8 @@ public class QueryItemsActivity extends AppCompatActivity {
         }
     }
 
-    private void setAllDonors(){
-        mAdapter = new QueryItemsRecyclerAdapter(donorID, name, phone, address, ssn, age, sex, context);
+    private void setAllItems(){
+        mAdapter = new QueryItemsRecyclerAdapter(bpackId, btype, donorId, donationTS, amount, location, status, context);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -211,7 +209,7 @@ public class QueryItemsActivity extends AppCompatActivity {
 
     }
 
-    public void getSingleDonor(){
+    public void getSingleItem(){
         final String URL_GET_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/get_donor_by_id/"+Config.DonorID;
         class GetJSONProduct extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
@@ -233,8 +231,8 @@ public class QueryItemsActivity extends AppCompatActivity {
                 JSON_STRING = s;
 
                 if (s != null && s.length() > 0 ) {
-                    getDonorResult();
-                    setAllDonors();
+                    getItemResult();
+                    setAllItems();
                 } else {
                     showDonorError();
                 }
@@ -245,38 +243,35 @@ public class QueryItemsActivity extends AppCompatActivity {
         gjp.execute();
     }
 
-    private void getDonorResult(){
+    private void getItemResult(){
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(JSON_STRING);
-            donorID =new String[1];
-            ssn =new String[1];
-            name =new String[1];
-            phone =new String[1];
-            address =new String[1];
-            age =new String[1];
-            sex =new String[1];
+            bpackId =new String[1];
             btype =new String[1];
+            donorId =new String[1];
+            donationTS =new String[1];
+            amount =new String[1];
+            location =new String[1];
+            status =new String[1];
 
-            donorID[0]=Config.DonorID;
-            name[0]=jsonObject.getString("name");
-            address[0]=jsonObject.getString("address");
-            phone[0]=jsonObject.getString("phone");
-            ssn[0]=jsonObject.getString("ssn");
-            age[0]=jsonObject.getString("age");
-            sex[0]=jsonObject.getString("sex");
+            bpackId[0]=Config.BpackID;
             btype[0]=jsonObject.getString("btype");
+            donorId[0]=jsonObject.getString("donorId");
+            donationTS[0]=jsonObject.getString("donationTS");
+            amount[0]=jsonObject.getString("amount");
+            location[0]=jsonObject.getString("location");
+            status[0]=jsonObject.getString("status");
 
 
         } catch (JSONException e) {
-            name[0]="-";
-            address[0]="-";
-            phone[0]="-";
-            ssn[0]="-";
-            age[0]="-";
-            sex[0]="-";
             btype[0]="-";
-        }
+            donorId[0]="-";
+            donationTS[0]="-";
+            amount[0]="-";
+            location[0]="-";
+            status[0]="-";
+         }
     }
 
 
