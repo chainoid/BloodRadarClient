@@ -164,8 +164,8 @@ public class OptionsActivity extends AppCompatActivity{
                   } else if (Config.mUserType.toLowerCase().equals("bank")){
 
                       if(position==0){
-                          Config.IfGetAllDonors =false;
-                          showCustomDialog();
+                          Config.IfGetAllDonors =true;
+                          showQueryItemDialog();
                       }else if(position==1){
                           Config.IfGetAllDonors =false;
                           launchActivity(ScannerActivity.class);
@@ -330,6 +330,36 @@ public class OptionsActivity extends AppCompatActivity{
             }
         });
     }
+
+
+    private void showQueryItemDialog(){
+        // Create custom dialog object
+        final Dialog dialog = new Dialog(OptionsActivity.this);
+        // remove dialog title
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // Include custom_dialog.xml file
+        dialog.setContentView(R.layout.select_popup);
+
+        Button btnOk=(Button)dialog.findViewById(R.id.btnOk);
+        final EditText txtID=(EditText)dialog.findViewById(R.id.txtType);
+        dialog.show();
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txtID.getText().toString().equals("")){
+                    showSelectError();
+                }else{
+                    dialog.dismiss();
+                    Config.Btype =txtID.getText().toString().trim();
+                    Intent intent=new Intent(OptionsActivity.this, QueryItemsActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                }
+            }
+        });
+    }
+
+
 
     private void showSelectError(){
         Snackbar.with(getApplicationContext()).text("Selected blood type cannot be empty").show(this);
