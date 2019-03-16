@@ -13,6 +13,6 @@ public class Config {
     public static String Btype="Apos" ;
 
 
-    public static String TempID="5BA48C7FBC8044D2" ;
+    public static String TempID="21C49827838318BB" ;
 
 }

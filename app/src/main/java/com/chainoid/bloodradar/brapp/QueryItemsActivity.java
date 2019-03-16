@@ -143,7 +143,6 @@ public class QueryItemsActivity extends AppCompatActivity {
                         location[i]="-";
                         status[i]="-";
                     }
-
                 }
                 catch(JSONException e)
                 {

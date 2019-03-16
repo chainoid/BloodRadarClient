@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="400dp"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
@@ -31,6 +31,30 @@
             android:baselineAligned="false"
             android:gravity="center_vertical"
             android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/txtNameLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arvo"
+                android:gravity="left"
+                android:text="Name"
+                android:textColor="@color/lightText"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:id="@+id/txtName"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="190dp"
+                android:layout_height="32dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/arvo"
+                android:text="First name"
+                android:textSize="15dp"
+                tools:targetApi="jelly_bean" />
+
 
 
             <TextView
@@ -185,6 +209,35 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/txtLabelBtype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="0dp"
+                android:alpha="0.70"
+                android:fontFamily="@font/arvo"
+                android:gravity="center"
+                android:text="Btype"
+                android:textColor="#000000"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/txtBtype"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal|left"
+                android:fontFamily="@font/arvo"
+                android:gravity="center"
+                android:text="N"
+                android:textColor="@color/machine_title"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
 
             <TextView
                 android:id="@+id/txtLabelSSN"

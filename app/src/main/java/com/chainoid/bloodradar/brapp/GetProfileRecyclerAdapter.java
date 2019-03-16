@@ -15,6 +15,7 @@ public class GetProfileRecyclerAdapter extends RecyclerView.Adapter<GetProfileRe
     private Context mContext;
     private String[] donorID;
     private String[] name;
+    private String[] btype;
     private String[] phone;
     private String[] address;
     private String[] ssn;
@@ -24,7 +25,8 @@ public class GetProfileRecyclerAdapter extends RecyclerView.Adapter<GetProfileRe
     private String[] uniqueID;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtOwner;
+        public TextView txtName;
+        public TextView txtBtype;
         public TextView txtAddress;
         public TextView txtPhone;
         public TextView txtSSN;
@@ -34,10 +36,10 @@ public class GetProfileRecyclerAdapter extends RecyclerView.Adapter<GetProfileRe
 
         public MyViewHolder(View view) {
             super(view);
-         //   txtOwner = (TextView) view.findViewById(R.id.txtAddress);
+            txtName = (TextView) view.findViewById(R.id.txtName);
             txtAddress = (TextView) view.findViewById(R.id.txtAddress);
             txtPhone = (TextView) view.findViewById(R.id.txtPhone);
-        //    txtUniqueID = (TextView) view.findViewById(R.id.txtUniqueID);
+            txtBtype = (TextView) view.findViewById(R.id.txtBtype);
             txtDonorID = (TextView) view.findViewById(R.id.txtDonorID);
             txtAge = (TextView) view.findViewById(R.id.txtAge);
             txtSSN = (TextView) view.findViewById(R.id.txtSSN);
@@ -53,10 +55,11 @@ public class GetProfileRecyclerAdapter extends RecyclerView.Adapter<GetProfileRe
         return new MyViewHolder(itemView);
     }
 
-    public GetProfileRecyclerAdapter(String[] donorID, String[] name, String[] phone, String[] address, String[] ssn, String[] age, String[] sex, Context context) {
+    public GetProfileRecyclerAdapter(String[] donorID, String[] name, String[] btype, String[] phone, String[] address, String[] ssn, String[] age, String[] sex, Context context) {
         this.donorID = donorID;
         this.mContext=context;
         this.name = name;
+        this.btype = btype;
         this.phone =phone;
         this.address=address;
         this.ssn=ssn;
@@ -66,7 +69,8 @@ public class GetProfileRecyclerAdapter extends RecyclerView.Adapter<GetProfileRe
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-     //   holder.txtOwner.setText(name[position]);
+        holder.txtName.setText(name[position]);
+        holder.txtBtype.setText(btype[position]);
         holder.txtAddress.setText(address[position]);
         holder.txtDonorID.setText(donorID[position]);
         holder.txtPhone.setText(phone[position]);

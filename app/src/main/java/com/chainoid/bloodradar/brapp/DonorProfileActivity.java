@@ -65,13 +65,12 @@ public class DonorProfileActivity extends AppCompatActivity {
 
         // Only one case there
         getDonorProfile();
-
     }
 
 
 
     private void setAllDonors(){
-        mAdapter = new GetProfileRecyclerAdapter(donorID, name, phone, address, ssn, age, sex, context);
+        mAdapter = new GetProfileRecyclerAdapter(donorID, name, btype, phone, address, ssn, age, sex, context);
         mRecyclerView.setAdapter(mAdapter);
     }
 

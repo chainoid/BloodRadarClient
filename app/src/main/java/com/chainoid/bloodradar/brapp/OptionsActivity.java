@@ -140,14 +140,17 @@ public class OptionsActivity extends AppCompatActivity{
                             overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                         }else if(position==2){
                             Config.IfGetAllDonors =false;
-                            launchActivity(ScannerActivity.class);
-                            overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+
+                            showCustomDialog();
+
+                            //launchActivity(ScannerActivity.class);
+                            //overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                         }
                     } else if (Config.mUserType.toLowerCase().equals("hospital")){
 
                       if(position==0){
-                          Config.IfGetAllDonors =false;
-                          showCustomDialog();
+                          Config.IfGetAllDonors =true;
+                          showQueryItemDialog();
                       }else if(position==1){
                           Config.IfGetAllDonors =false;
                           launchActivity(ScannerActivity.class);
@@ -284,9 +287,8 @@ public class OptionsActivity extends AppCompatActivity{
 
                         // TODO DELETE
                         Config.DonorID = Config.TempID;
-                         intent = new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
+                        intent = new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
                     } else if (Config.mUserType.toLowerCase().equals("donor")) {
-
 
                         // TODO DELETE
                         Config.DonorID = Config.TempID;
@@ -358,7 +360,6 @@ public class OptionsActivity extends AppCompatActivity{
             }
         });
     }
-
 
 
     private void showSelectError(){
