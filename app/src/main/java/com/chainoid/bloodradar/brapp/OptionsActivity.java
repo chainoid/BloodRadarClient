@@ -56,24 +56,35 @@ public class OptionsActivity extends AppCompatActivity{
 
         if(Config.mUserType.toLowerCase().equals("admin")){
             optionsList=getResources().getStringArray(R.array.adminOptions);
-            optionsIcon=new Integer[4];
+            optionsIcon=new Integer[5];
             optionsIcon[0]=R.mipmap.ic_get_all;
             optionsIcon[1]=R.mipmap.ic_get_one;
             optionsIcon[2]=R.mipmap.ic_qr;
             optionsIcon[3]=R.mipmap.ic_create;
-            //optionsIcon[4]=R.mipmap.ic_update;
+            optionsIcon[4]=R.mipmap.ic_update;
         }else if(Config.mUserType.toLowerCase().equals("donor")){
             optionsList=getResources().getStringArray(R.array.donorOptions);
-            optionsIcon=new Integer[2];
+            optionsIcon=new Integer[3];
             optionsIcon[0]=R.mipmap.ic_get_one;
             optionsIcon[1]=R.mipmap.ic_qr;
-        }else{
+            optionsIcon[2]=R.mipmap.ic_get_all;
+        }else if(Config.mUserType.toLowerCase().equals("hospital")){
+            optionsList=getResources().getStringArray(R.array.hospitalOptions);
+            optionsIcon=new Integer[3];
+            optionsIcon[0]=R.mipmap.ic_get_all;
+            optionsIcon[1]=R.mipmap.ic_get_one;
+            optionsIcon[2]=R.mipmap.ic_qr;
+        }else if(Config.mUserType.toLowerCase().equals("camp")){
             optionsList=getResources().getStringArray(R.array.hospitalOptions);
             optionsIcon=new Integer[3];
             optionsIcon[0]=R.mipmap.ic_get_all;
             optionsIcon[1]=R.mipmap.ic_get_one;
             optionsIcon[2]=R.mipmap.ic_qr;
         }
+
+
+
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -105,14 +116,12 @@ public class OptionsActivity extends AppCompatActivity{
                         Intent intent=new Intent(OptionsActivity.this, AddDonorActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
-                    }
-                    /**
-                    else if(position==4){
+                    }else if(position==4){
                         Intent intent=new Intent(OptionsActivity.this, UpdateDonorActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
-                   }
-                    **/
+                    }
+
                     } else if (Config.mUserType.toLowerCase().equals("donor")){
 
                         if(position==0){
@@ -122,8 +131,22 @@ public class OptionsActivity extends AppCompatActivity{
                             Config.IfGetAllDonors =false;
                             launchActivity(ScannerActivity.class);
                             overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                        }else if(position==2){
+                            Config.IfGetAllDonors =false;
+                            launchActivity(ScannerActivity.class);
+                            overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                         }
-                    }
+                    } else if (Config.mUserType.toLowerCase().equals("hospital")){
+
+                      if(position==0){
+                          Config.IfGetAllDonors =false;
+                          showCustomDialog();
+                      }else if(position==1){
+                          Config.IfGetAllDonors =false;
+                          launchActivity(ScannerActivity.class);
+                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                      }
+                  }
 
                 }
             }
