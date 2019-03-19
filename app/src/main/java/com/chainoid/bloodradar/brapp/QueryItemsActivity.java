@@ -209,7 +209,7 @@ public class QueryItemsActivity extends AppCompatActivity {
     }
 
     public void getSingleItem(){
-        final String URL_GET_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/get_donor_by_id/"+Config.DonorID;
+        final String URL_GET_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/get_bpack_by_id/"+Config.BpackID;
         class GetJSONProduct extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -229,7 +229,7 @@ public class QueryItemsActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 JSON_STRING = s;
 
-                if (s != null && s.length() > 0 ) {
+                if (s != null && s.length() > 0  && !s.contains("No data found")) {
                     getItemResult();
                     setAllItems();
                 } else {

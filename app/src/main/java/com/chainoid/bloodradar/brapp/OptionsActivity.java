@@ -153,8 +153,7 @@ public class OptionsActivity extends AppCompatActivity{
                           showQueryItemDialog();
                       }else if(position==1){
                           Config.IfGetAllDonors =false;
-                          launchActivity(ScannerActivity.class);
-                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                          showCustomDialog();
                       }else if(position==2){
                           Config.IfGetAllDonors =false;
                           launchActivity(ScannerActivity.class);
@@ -285,6 +284,9 @@ public class OptionsActivity extends AppCompatActivity{
 
                     if (Config.mUserType.toLowerCase().equals("admin")) {
 
+
+                        Config.DonorID =txtID.getText().toString().trim();
+
                         // TODO DELETE
                         Config.DonorID = Config.TempID;
                         intent = new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
@@ -293,6 +295,13 @@ public class OptionsActivity extends AppCompatActivity{
                         // TODO DELETE
                         Config.DonorID = Config.TempID;
                         intent = new Intent(OptionsActivity.this, DonorProfileActivity.class);
+                    } else if (Config.mUserType.toLowerCase().equals("hospital")) {
+
+                        Config.BpackID =txtID.getText().toString().trim();
+
+                        // TODO DELETE
+                        Config.BpackID = Config.TempID;
+                        intent = new Intent(OptionsActivity.this, QueryItemsActivity.class);
                     }
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
