@@ -209,7 +209,7 @@ public class QueryItemsActivity extends AppCompatActivity {
     }
 
     public void getSingleItem(){
-        final String URL_GET_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/get_bpack_by_id/"+Config.BpackID;
+        final String URL_GET_ITEM="http://"+Config.ServerIP+":"+Config.Port+"/get_bpack_by_id/"+Config.BpackID;
         class GetJSONProduct extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -220,7 +220,7 @@ public class QueryItemsActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(URL_GET_DONOR);
+                String s = rh.sendGetRequest(URL_GET_ITEM);
                 return s;
             }
 

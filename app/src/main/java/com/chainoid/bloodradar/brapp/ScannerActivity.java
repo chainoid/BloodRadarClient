@@ -60,9 +60,18 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         // Note:
         // * Wait 2 seconds to resume the preview.
         // * On older devices continuously stopping and resuming camera preview can result in freezing the app.
-        // * I don't know why this is the case but I don't have the time to figure out.
-        Config.DonorID =rawResult.getText().toString().trim();
-        Intent intent=new Intent(ScannerActivity.this, GetAllDonorsActivity.class);
+
+        Intent intent =  new Intent(ScannerActivity.this, GetAllDonorsActivity.class);;
+
+        if (Config.mUserType.toLowerCase().equals("admin")) {
+
+            Config.DonorID = rawResult.getText().toString().trim();
+            intent = new Intent(ScannerActivity.this, GetAllDonorsActivity.class);
+        } else  if (Config.mUserType.toLowerCase().equals("hospital")) {
+
+            Config.BpackID =rawResult.getText().toString().trim();
+            intent = new Intent(ScannerActivity.this, QueryItemsActivity.class);
+        }
         finish();
         startActivity(intent);
         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);

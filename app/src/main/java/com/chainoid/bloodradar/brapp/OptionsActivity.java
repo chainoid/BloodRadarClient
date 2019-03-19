@@ -284,23 +284,20 @@ public class OptionsActivity extends AppCompatActivity{
 
                     if (Config.mUserType.toLowerCase().equals("admin")) {
 
-
-                        Config.DonorID =txtID.getText().toString().trim();
-
                         // TODO DELETE
-                        Config.DonorID = Config.TempID;
+                        //Config.DonorID = Config.TempID;
                         intent = new Intent(OptionsActivity.this, GetAllDonorsActivity.class);
                     } else if (Config.mUserType.toLowerCase().equals("donor")) {
 
                         // TODO DELETE
-                        Config.DonorID = Config.TempID;
+                        //Config.DonorID = Config.TempID;
                         intent = new Intent(OptionsActivity.this, DonorProfileActivity.class);
                     } else if (Config.mUserType.toLowerCase().equals("hospital")) {
 
                         Config.BpackID =txtID.getText().toString().trim();
 
                         // TODO DELETE
-                        Config.BpackID = Config.TempID;
+                        //Config.BpackID = Config.TempID;
                         intent = new Intent(OptionsActivity.this, QueryItemsActivity.class);
                     }
                     startActivity(intent);
