@@ -23,10 +23,11 @@ import org.json.JSONObject;
 public class ItemHistoryActivity extends AppCompatActivity {
 
     private String JSON_STRING;
+
     private String[] bpackId;
 
-    private String[] btype;
     private String[] donorId;
+
     private String[] donationTS;
     private String[] amount;
     private String[] location;
@@ -37,6 +38,7 @@ public class ItemHistoryActivity extends AppCompatActivity {
 
     private String[] name;
     private String[] address;
+    private String[] phone;
 
     private String[] holder;
 
@@ -45,7 +47,11 @@ public class ItemHistoryActivity extends AppCompatActivity {
     private ImageView imgLogout;
     private RecyclerView mRecyclerView;
     private ItemHistoryRecyclerAdapter mAdapter;
+    private DonorHistoryRecyclerAdapter mAdapter2;
+
     private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView.LayoutManager mLayoutManager2;
+
     private Context context=this;
 
     @Override
@@ -127,28 +133,17 @@ public class ItemHistoryActivity extends AppCompatActivity {
             holder  = new String[result.length()];
             status  = new String[result.length()];
 
-            //btype = new String[result.length()];
-
-            //amount =new String[result.length()];
-            //location =new String[result.length()];
-
-
             for(int i = 0; i<result.length(); i++){
                 JSONObject jo = result.getJSONObject(i);
                 try {
-                    //bpackId[i]=jo.getString("Key");
 
                     String Record=jo.getString("Record");
-
                     String transTS=jo.getString("TxTS");
 
                     try{
 
                         JSONObject joRecord=new JSONObject(Record);
 
-                        //btype[i]=joRecord.getString("btype");
-                        //donorId[i]=joRecord.getString("donorId");
-                        //donationTS[i]=joRecord.getString("donationTS");
                         //amount[i]=joRecord.getString("amount");
 
                         bpackId[i]=Config.BpackID;
@@ -157,11 +152,9 @@ public class ItemHistoryActivity extends AppCompatActivity {
 
                         txTS[i]=transTS;
 
-
                     }catch (Exception e){
                         //btype[i]="-";
                         //donorId[i]="-";
-                        //donationTS[i]="-";
                         bpackId[i]="-";
                         holder[i]="-";
                         status[i]="-";
@@ -232,7 +225,7 @@ public class ItemHistoryActivity extends AppCompatActivity {
     }
 
     public void getDonorHistory(){
-        final String URL_GET_ITEM="http://"+Config.ServerIP+":"+Config.Port+"/donor_history/"+Config.DonorID;
+        final String URL_GET_DONOR_HISTORY="http://"+Config.ServerIP+":"+Config.Port+"/donor_history/"+Config.DonorID;
         class GetJSONProduct extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override
@@ -243,7 +236,7 @@ public class ItemHistoryActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(URL_GET_ITEM);
+                String s = rh.sendGetRequest(URL_GET_DONOR_HISTORY);
                 return s;
             }
 
@@ -266,52 +259,71 @@ public class ItemHistoryActivity extends AppCompatActivity {
 
 
     private void setDonorHistory(){
-     //   mAdapter = new DonorHistoryRecyclerAdapter(name, address, context);
-      //  mRecyclerView.setAdapter(mAdapter);
+        mAdapter2 = new DonorHistoryRecyclerAdapter(txTS, name, address, phone, context);
+        mRecyclerView.setAdapter(mAdapter2);
     }
 
 
     private void getDonorHistoryResult(){
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(JSON_STRING);
-            name =new String[1];
-            address =new String[1];
-            //donorId =new String[1];
-            //donationTS =new String[1];
-            //amount =new String[1];
-            //location =new String[1];
-            //status =new String[1];
 
-            //bpackId[0]=Config.BpackID;
-            name[0]=jsonObject.getString("name");
-            address[0]=jsonObject.getString("address");
-         //   donationTS[0]=jsonObject.getString("donationTS");
-         //   amount[0]=jsonObject.getString("amount");
-         //   location[0]=jsonObject.getString("location");
-         //   status[0]=jsonObject.getString("status");
+        JSONObject jsonObject = null;
+
+        try {
+
+            JSONArray result = new JSONArray(JSON_STRING);
+
+
+            donorId = new String[result.length()];
+            name    = new String[result.length()];
+            address  = new String[result.length()];
+            phone    = new String[result.length()];
+            txTS    = new String[result.length()];
+
+
+            for(int i = 0; i<result.length(); i++){
+                JSONObject jo = result.getJSONObject(i);
+                try {
+
+                    String transactionTS=jo.getString("TxTS");
+
+                    String Record=jo.getString("Record");
+
+                    try{
+
+                        JSONObject joRecord=new JSONObject(Record);
+
+                       donorId[i]=Config.DonorID;
+                       name[i]=joRecord.getString("name");
+                       address[i]=joRecord.getString("address");
+                       phone[i]=joRecord.getString("phone");
+                       txTS[i]=transactionTS;
+
+                    }catch (Exception e){
+
+                        donorId[i]="-";
+                        name[i]="-";
+                        address[i]="-";
+                        phone[i]="-";
+                        txTS[i]="-";
+                    }
+                }
+                catch(JSONException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
 
         } catch (JSONException e) {
-            name[0]="-";
-            address[0]="-";
-         //   donationTS[0]="-";
-         //   amount[0]="-";
-         //   location[0]="-";
-         //   status[0]="-";
-         }
+            e.printStackTrace();
+            showDonorError();
+        }
     }
-
 
 
     private void showDonorError(){
        Snackbar.with(getApplicationContext()).text("Cannot load data for this donor(s).").show(this);
     }
-
-
-    private void showDebug(String debugInfo ){
-        Snackbar.with(getApplicationContext()).text(debugInfo).show(this);
-    }
-
 
 
     @Override

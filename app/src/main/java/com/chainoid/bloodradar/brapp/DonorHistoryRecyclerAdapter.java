@@ -13,20 +13,16 @@ public class DonorHistoryRecyclerAdapter extends RecyclerView.Adapter<DonorHisto
     private Context mContext;
     private String[] name;
     private String[] address;
-   // private String[] donorId;
-   // private String[] donationTS;
-   // private String[] amount;
-   // private String[] location;
-   // private String[] status;
-
-    //private String[] uniqueID;
+    private String[] txTS;
+    private String[] phone;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView txtName;
         public TextView txtAddress;
-        //public TextView txtDonationTS;
-        //public TextView txtAmount;
+        public TextView txtPhone;
+        public TextView txtTxTS;
+
         //public TextView txtLocation;
         //public TextView txtStatus;
 
@@ -36,11 +32,8 @@ public class DonorHistoryRecyclerAdapter extends RecyclerView.Adapter<DonorHisto
 
             txtName = (TextView) view.findViewById(R.id.txtName);
             txtAddress = (TextView) view.findViewById(R.id.txtAddress);
-            //txtDonationTS = (TextView) view.findViewById(R.id.txtDonationTS);
-            //txtStatus  = (TextView) view.findViewById(R.id.txtStatus);
-            //txtLocation = (TextView) view.findViewById(R.id.txtLocation);
-            //txtAmount = (TextView) view.findViewById(R.id.txtAmount);
-            //txtStatus  = (TextView) view.findViewById(R.id.txtStatus);
+            txtTxTS = (TextView) view.findViewById(R.id.txtTxTS);
+            txtPhone  = (TextView) view.findViewById(R.id.txtPhone);
 
         }
     }
@@ -48,35 +41,29 @@ public class DonorHistoryRecyclerAdapter extends RecyclerView.Adapter<DonorHisto
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.query_item_layout, parent, false);
+                .inflate(R.layout.donor_history_layout, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
-    public DonorHistoryRecyclerAdapter(String[] name, String[] address, Context context) {
+    public DonorHistoryRecyclerAdapter(String[] txTS, String[] name, String[] address, String[] phone, Context context) {
 
+
+        this.txTS      = txTS;
         this.name = name;
         this.address   = address;
-        //this.donorId = donorId;
-        //this.donationTS = donationTS;
-        //this.amount = amount;
-        //this.location = location;
-        //this.status=status;
+        this.phone   = phone;
 
         this.mContext=context;
-
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-     //   holder.txtOwner.setText(name[position]);
 
         holder.txtName.setText(name[position]);
         holder.txtAddress.setText(address[position]);
-        //holder.txtDonationTS.setText(donationTS[position]);
-        //holder.txtAmount.setText(amount[position]);
-        //holder.txtLocation.setText(location[position]);
-        //holder.txtStatus.setText(status[position]);
+        holder.txtPhone.setText(phone[position]);
+        holder.txtTxTS.setText(txTS[position]);
 
         animate(holder,mContext);
     }
