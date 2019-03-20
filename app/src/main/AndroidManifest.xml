@@ -60,6 +60,13 @@
         <activity android:name="com.chainoid.bloodradar.brapp.DonorProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme2"></activity>
+        <activity android:name="com.chainoid.bloodradar.brapp.ScannerHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2"></activity>
+        <activity android:name="com.chainoid.bloodradar.brapp.ItemHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme2"></activity>
+
     </application>
 
 </manifest>
