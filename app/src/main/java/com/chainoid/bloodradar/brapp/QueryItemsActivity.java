@@ -94,7 +94,7 @@ public class QueryItemsActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 JSON_STRING = s;
 
-                if (s != null && s.length() > 0 ) {
+                if (s != null && s.length() > 0  && !s.contains("No data found")) {
                     getAllItemsResult();
                     setAllItems();
                 } else {
