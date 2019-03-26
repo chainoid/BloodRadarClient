@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import android.support.v7.widget.RecyclerView;
 import com.nispok.snackbar.Snackbar;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,9 +32,6 @@ public class UpdateDonorActivity extends AppCompatActivity {
     private String[] phone;
     private String[] age;
 
-    private UpdateDonorRecyclerAdapter mAdapter;
-    private RecyclerView mRecyclerView;
-
     private Context context=this;
 
     @Override
@@ -44,16 +39,16 @@ public class UpdateDonorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_donor);
 
+        txtFeedback=(TextView)findViewById(R.id.txtFeedback);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         txtName=(EditText)findViewById(R.id.txtName);
         txtAddress=(EditText)findViewById(R.id.txtAddress);
         txtPhone=(EditText)findViewById(R.id.txtPhone);
         txtAge=(EditText)findViewById(R.id.txtAge);
-
-
         btnUpdate=(Button)findViewById(R.id.btnOk);
 
         toolbarTitle.setText(Config.mUserType);
+        txtFeedback.setVisibility(View.GONE);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +142,12 @@ public class UpdateDonorActivity extends AppCompatActivity {
     }
 
     private void updateDonor(){
-        String uri=txtName.getText().toString().trim()+"-"+txtAddress.getText().toString().trim();
+        String uri=Config.DonorID+"-"+
+                txtName.getText().toString().trim()+"-"+
+                txtAddress.getText().toString().trim()+"-"+
+                txtPhone.getText().toString().trim()+"-"+
+                txtAge.getText().toString().trim();
+
         final String URL_UPDATE_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/update_donor/"+uri;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog progressDialog;
