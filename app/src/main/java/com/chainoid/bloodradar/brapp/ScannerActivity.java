@@ -66,7 +66,16 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         if (Config.mUserType.toLowerCase().equals("admin")) {
 
             Config.DonorID = rawResult.getText().toString().trim();
-            intent = new Intent(ScannerActivity.this, GetAllDonorsActivity.class);
+
+            if (Config.UpdateDonor) {
+               intent = new Intent(ScannerActivity.this, UpdateDonorActivity.class);
+            } else {
+               intent = new Intent(ScannerActivity.this, GetAllDonorsActivity.class);
+            }
+        } else  if (Config.mUserType.toLowerCase().equals("donor")) {
+
+            Config.BpackID =rawResult.getText().toString().trim();
+            intent = new Intent(ScannerActivity.this, DonorProfileActivity.class);
         } else  if (Config.mUserType.toLowerCase().equals("hospital")) {
 
             Config.BpackID =rawResult.getText().toString().trim();

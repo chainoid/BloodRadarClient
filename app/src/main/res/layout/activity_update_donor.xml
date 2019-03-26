@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_background"
+    android:minWidth="400dp">
+    <!-- Toolbar definition -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/toolbarBackground"
+        android:elevation="4dp">
+
+        <LinearLayout
+            android:id="@+id/ll_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:src="@mipmap/ic_user" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:text="Admin"
+                    android:textColor="@color/mainText"
+                    android:textSize="22dp"
+                    app:fontFamily="@font/ubuntu_medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="35dp"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/logout_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:text="Logout"
+                    android:textColor="@color/mainText"
+                    android:textSize="20dp"
+                    app:fontFamily="@font/ubuntu_medium" />
+
+                <ImageView
+                    android:id="@+id/imgLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="0dp"
+                    android:src="@drawable/ic_power_settings_new" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:id="@+id/txtFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:text="Success! TxID : 1215dfdjfh7r7rfdf45454f4df4df"
+            android:textColor="@color/machine_title"
+            android:fontFamily="@font/ubuntu_medium"
+            android:gravity="center_vertical"
+            android:textSize="18dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtNameLabel"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:text="Name :"
+            android:textColor="#000000"
+            android:fontFamily="@font/ubuntu_medium"
+            android:gravity="center_vertical"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_marginLeft="30dp"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:hint="E.g. John"
+            android:textCursorDrawable="@null"
+            android:fontFamily="@font/ubuntu_light"
+            android:background="@drawable/edit_text_bg"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtAddressLabel"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:text="Address :"
+            android:textColor="#000000"
+            android:fontFamily="@font/ubuntu_medium"
+            android:gravity="center_vertical"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/txtAddress"
+            android:layout_marginLeft="30dp"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:hint="E.g. Second str., 56"
+            android:textSize="18dp"
+            android:textCursorDrawable="@null"
+            android:fontFamily="@font/ubuntu_light"
+            android:background="@drawable/edit_text_bg"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtPhoneLabel"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:text="Phone :"
+            android:textColor="#000000"
+            android:fontFamily="@font/ubuntu_medium"
+            android:gravity="center_vertical"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/txtPhone"
+            android:layout_marginLeft="30dp"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:hint="E.g. 380-66-88"
+            android:textCursorDrawable="@null"
+            android:fontFamily="@font/ubuntu_light"
+            android:background="@drawable/edit_text_bg"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtAgeLabel"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:text="Age :"
+            android:textColor="#000000"
+            android:fontFamily="@font/ubuntu_medium"
+            android:gravity="center_vertical"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/txtAge"
+            android:layout_marginLeft="30dp"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:hint="E.g. 21"
+            android:textCursorDrawable="@null"
+            android:fontFamily="@font/ubuntu_light"
+            android:background="@drawable/edit_text_bg"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="15dp">
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="120dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="0dp"
+            android:text="Update"
+            android:textColor="@color/buttonText"
+            android:fontFamily="@font/ubuntu_medium"
+            android:background="@drawable/button_style"
+            android:textSize="15dp"
+            android:clickable="true"/>
+    </LinearLayout>
+</LinearLayout>

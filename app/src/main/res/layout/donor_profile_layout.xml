@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
@@ -54,7 +54,6 @@
                 android:text="First name"
                 android:textSize="15dp"
                 tools:targetApi="jelly_bean" />
-
 
 
             <TextView
@@ -118,14 +117,15 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="top"
                         android:orientation="vertical">
 
                         <TextView
@@ -138,7 +138,7 @@
                             android:alpha="0.70"
                             android:baselineAligned="false"
                             android:fontFamily="@font/arvo"
-                            android:gravity="center"
+                            android:gravity="left"
                             android:text="DonorID"
                             android:textColor="#000000"
                             android:textSize="12dp" />
@@ -159,13 +159,7 @@
 
                     </LinearLayout>
 
-                    <!--LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
 
-                    </LinearLayout-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -209,7 +203,6 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:orientation="vertical">
-
 
 
             <TextView

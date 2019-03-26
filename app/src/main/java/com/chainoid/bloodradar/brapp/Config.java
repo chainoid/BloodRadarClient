@@ -9,6 +9,8 @@ public class Config {
     public static String BpackID;
     public static String Status;
 
+    public static Boolean UpdateDonor;
+
     public static String Port="9000";
     public static String Btype="Apos" ;
 

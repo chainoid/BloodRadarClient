@@ -110,7 +110,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtTxTSLabel"
+                android:id="@+id/txtAgeLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -118,12 +118,12 @@
                 android:baselineAligned="false"
                 android:fontFamily="@font/arvo"
                 android:gravity="left"
-                android:text="Transaction TS"
+                android:text="Age"
                 android:textColor="#000000"
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/txtTxTS"
+                android:id="@+id/txtAge"
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,10 +131,39 @@
 
                 android:fontFamily="@font/arvo"
                 android:gravity="left"
-                android:text="#transactionTS"
+                android:text="#age"
                 android:textColor="@color/blueOEE"
                 android:textSize="12dp"
                 android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/txtDonorIdLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:alpha="0.70"
+                android:baselineAligned="false"
+                android:fontFamily="@font/arvo"
+                android:gravity="left"
+                android:text="DonorId"
+                android:textColor="#000000"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/txtDonorId"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+
+                android:fontFamily="@font/arvo"
+                android:gravity="left"
+                android:text="#donorId"
+                android:textColor="@color/blueOEE"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
 
         </LinearLayout>
 

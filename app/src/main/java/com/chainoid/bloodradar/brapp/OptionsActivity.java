@@ -119,6 +119,7 @@ public class OptionsActivity extends AppCompatActivity{
                         showCustomDialog();
                     }else if(position==2){
                         Config.IfGetAllDonors =false;
+                        Config.UpdateDonor    =false;
                         launchActivity(ScannerActivity.class);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==3){
@@ -126,9 +127,10 @@ public class OptionsActivity extends AppCompatActivity{
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                     }else if(position==4){
-                        Intent intent=new Intent(OptionsActivity.this, UpdateDonorActivity.class);
-                        startActivity(intent);
+                        Config.UpdateDonor = true;
+                        launchActivity(ScannerActivity.class);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+
                     }
 
                     } else if (Config.mUserType.toLowerCase().equals("donor")){
