@@ -74,7 +74,7 @@ public class QueryItemsActivity extends AppCompatActivity {
     public void getAllItems(){
 
 
-        final String URL_GET_DONORS_BY_BTYPE="http://"+Config.ServerIP+":"+Config.Port+"/query_bpack_by_btype/"+Config.Btype+"-ALL";
+        final String URL_GET_DONORS_BY_BTYPE="http://"+Config.ServerIP+":"+Config.Port+"/query_bpack_by_btype/"+Config.Btype + "-" + Config.Status;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
             @Override

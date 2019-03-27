@@ -86,12 +86,10 @@ public class OptionsActivity extends AppCompatActivity{
             optionsIcon[3]=R.mipmap.ic_get_one;
         }else if(Config.mUserType.toLowerCase().equals("bank")){
             optionsList=getResources().getStringArray(R.array.bankOptions);
-            optionsIcon=new Integer[5];
+            optionsIcon=new Integer[3];
             optionsIcon[0]=R.mipmap.ic_get_all;
-            optionsIcon[1]=R.mipmap.ic_get_one;
-            optionsIcon[2]=R.mipmap.ic_qr;
-            optionsIcon[3]=R.mipmap.ic_get_one;
-            optionsIcon[4]=R.mipmap.ic_get_one;
+            optionsIcon[1]=R.mipmap.ic_qr;
+            optionsIcon[2]=R.mipmap.ic_get_one;
         }
 
         mRecyclerView.setHasFixedSize(true);
@@ -151,7 +149,7 @@ public class OptionsActivity extends AppCompatActivity{
                             launchActivity(ScannerHistoryActivity.class);
                             overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                         }
-                        
+
                     } else if (Config.mUserType.toLowerCase().equals("hospital")){
 
                       if(position==0){
@@ -182,10 +180,6 @@ public class OptionsActivity extends AppCompatActivity{
                           launchActivity(ScannerActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }else if(position==2){
-                          Config.IfGetAllDonors =false;
-                          launchActivity(ScannerActivity.class);
-                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
-                      }else if(position==3){
                           Config.IfGetAllDonors =false;
                           launchActivity(ScannerStatusActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
@@ -355,16 +349,18 @@ public class OptionsActivity extends AppCompatActivity{
         dialog.setContentView(R.layout.select_popup);
 
         Button btnOk=(Button)dialog.findViewById(R.id.btnOk);
-        final EditText txtID=(EditText)dialog.findViewById(R.id.txtType);
+        final EditText txtType=(EditText)dialog.findViewById(R.id.txtType);
+        final EditText txtStatus=(EditText)dialog.findViewById(R.id.txtStatus);
         dialog.show();
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtID.getText().toString().equals("")){
+                if(txtType.getText().toString().equals("")){
                     showSelectError();
                 }else{
                     dialog.dismiss();
-                    Config.Btype =txtID.getText().toString().trim();
+                    Config.Btype =txtType.getText().toString().trim();
+                    Config.Status =txtStatus.getText().toString().trim();
                     Intent intent=new Intent(OptionsActivity.this, QueryItemsActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
