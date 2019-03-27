@@ -151,6 +151,7 @@ public class OptionsActivity extends AppCompatActivity{
                             launchActivity(ScannerHistoryActivity.class);
                             overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                         }
+                        
                     } else if (Config.mUserType.toLowerCase().equals("hospital")){
 
                       if(position==0){
@@ -186,13 +187,10 @@ public class OptionsActivity extends AppCompatActivity{
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }else if(position==3){
                           Config.IfGetAllDonors =false;
-                          launchActivity(ScannerActivity.class);
-                          overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
-                      }else if(position==4){
-                          Config.IfGetAllDonors =false;
-                          launchActivity(ScannerActivity.class);
+                          launchActivity(ScannerStatusActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }
+
                   } else if (Config.mUserType.toLowerCase().equals("camp")){
 
                       if(position==0){
@@ -208,7 +206,7 @@ public class OptionsActivity extends AppCompatActivity{
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }else if(position==3){
                           Config.IfGetAllDonors =false;
-                          launchActivity(ScannerActivity.class);
+                          launchActivity(ScannerStatusActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }
                   }

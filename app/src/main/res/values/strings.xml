@@ -35,7 +35,6 @@
         <item>Get a Bpack by its ID</item>
         <item>Get a Bpack by scanning QR</item>
         <item>Change status</item>
-        <item>Delete bpack</item>
     </string-array>
 
     <string-array name="btype_array">
