@@ -14,7 +14,6 @@ public class Config {
     public static String Port="9000";
     public static String Btype="Apos" ;
 
-
     public static String TempID="232F3EB3F82B8ED" ;
 
 }

@@ -1,8 +1,8 @@
 package com.chainoid.bloodradar.brapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -10,7 +10,7 @@ import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class ScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+public class ScannerTransfuseActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
     private static final int ZXING_CAMERA_PERMISSION = 1;
     private Class<?> mClss;
@@ -29,12 +29,13 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         contentFrame.addView(mScannerView);
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mScannerView.resumeCameraPreview(ScannerActivity.this);
+        mScannerView.resumeCameraPreview(ScannerTransfuseActivity.this);
     }
 
     @Override
@@ -62,30 +63,14 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         // * Wait 2 seconds to resume the preview.
         // * On older devices continuously stopping and resuming camera preview can result in freezing the app.
 
-        Intent intent =  new Intent(ScannerActivity.this, GetAllDonorsActivity.class);;
+        Config.BpackID = rawResult.getText().toString().trim();
 
-        if (Config.mUserType.toLowerCase().equals("admin")) {
+        Intent intent =  new Intent(ScannerTransfuseActivity.this, TransfuseActivity.class);;
 
-            Config.DonorID = rawResult.getText().toString().trim();
-
-            if (Config.UpdateDonor) {
-               intent = new Intent(ScannerActivity.this, UpdateDonorActivity.class);
-            } else {
-               intent = new Intent(ScannerActivity.this, GetAllDonorsActivity.class);
-            }
-        } else  if (Config.mUserType.toLowerCase().equals("donor")) {
-
-            Config.DonorID =rawResult.getText().toString().trim();
-            intent = new Intent(ScannerActivity.this, DonorProfileActivity.class);
-
-        } else  if (Config.mUserType.toLowerCase().equals("hospital")) {
-
-                Config.BpackID = rawResult.getText().toString().trim();
-                intent = new Intent(ScannerActivity.this, QueryItemsActivity.class);
-        }
         finish();
         startActivity(intent);
         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+
     }
 
 }

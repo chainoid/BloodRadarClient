@@ -130,10 +130,9 @@ public class OptionsActivity extends AppCompatActivity{
                         Config.UpdateDonor = true;
                         launchActivity(ScannerActivity.class);
                         overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
-
                     }
 
-                    } else if (Config.mUserType.toLowerCase().equals("donor")){
+                   } else if (Config.mUserType.toLowerCase().equals("donor")){
 
                         if(position==0){
                             Config.IfGetAllDonors =false;
@@ -170,7 +169,8 @@ public class OptionsActivity extends AppCompatActivity{
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }else if(position==4){
                           Config.IfGetAllDonors =false;
-                          launchActivity(ScannerActivity.class);
+                          Config.TransfuseFlag = true;
+                          launchActivity(ScannerTransfuseActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }
                   } else if (Config.mUserType.toLowerCase().equals("bank")){
