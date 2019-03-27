@@ -77,8 +77,16 @@ public class GetAllDonorsActivity extends AppCompatActivity {
         final String URL_GET_DONORS_BY_BTYPE="http://"+Config.ServerIP+":"+Config.Port+"/get_donors_by_btype/"+Config.Btype;
         class GetJSON extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
+
+            ProgressDialog progressDialog;
+
             @Override
             protected void onPreExecute() {
+
+                progressDialog=new ProgressDialog(GetAllDonorsActivity.this);
+                progressDialog.setMessage("Request started");
+                progressDialog.show();
+                super.onPreExecute();
                 super.onPreExecute();
             }
 
@@ -94,6 +102,8 @@ public class GetAllDonorsActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 JSON_STRING = s;
 
+                progressDialog.dismiss();
+
                 if (s != null && s.length() > 0  && !s.contains("No data found")) {
                     getAllDonorsResult();
                     setAllDonors();
@@ -107,7 +117,7 @@ public class GetAllDonorsActivity extends AppCompatActivity {
     }
 
     private void getAllDonorsResult(){
-        JSONObject jsonObject = null;
+              
         try {
             JSONArray result = new JSONArray(JSON_STRING);
             donorID =new String[result.length()];
@@ -118,7 +128,6 @@ public class GetAllDonorsActivity extends AppCompatActivity {
             age = new String[result.length()];
             sex = new String[result.length()];
             btype = new String[result.length()];
-
 
             for(int i = 0; i<result.length(); i++){
                 JSONObject jo = result.getJSONObject(i);
