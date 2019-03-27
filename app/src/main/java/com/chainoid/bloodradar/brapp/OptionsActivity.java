@@ -168,8 +168,6 @@ public class OptionsActivity extends AppCompatActivity{
                           launchActivity(ScannerHistoryActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }else if(position==4){
-                          Config.IfGetAllDonors =false;
-                          Config.TransfuseFlag = true;
                           launchActivity(ScannerTransfuseActivity.class);
                           overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                       }

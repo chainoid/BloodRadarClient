@@ -20,7 +20,8 @@ public class TransfuseActivity extends AppCompatActivity {
     private TextView toolbarTitle;
     private TextView txtFeedback;
 
-    private EditText txtDonorId;
+    private EditText txtTS;
+    private EditText txtStatus;
     private EditText txtBpackId;
     private EditText txtBtype;
     private EditText txtAmount;
@@ -28,7 +29,8 @@ public class TransfuseActivity extends AppCompatActivity {
     private Button btnUpdate;
     private String JSON_STRING;
 
-    private String donorId;
+    private String sourceTS;
+    private String status;
     private String bpackId;
     private String btype;
     private String amount;
@@ -42,7 +44,8 @@ public class TransfuseActivity extends AppCompatActivity {
 
         txtFeedback=(TextView)findViewById(R.id.txtFeedback);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        txtDonorId=(EditText)findViewById(R.id.txtDonorId);
+        txtTS =(EditText)findViewById(R.id.txtTS);
+        txtStatus =(EditText)findViewById(R.id.txtStatus);
         txtBpackId=(EditText)findViewById(R.id.txtBpackId);
         txtBtype=(EditText)findViewById(R.id.txtBtype);
         txtAmount=(EditText)findViewById(R.id.txtAmount);
@@ -106,7 +109,7 @@ public class TransfuseActivity extends AppCompatActivity {
     }
 
     private void showDonorError(){
-        Snackbar.with(getApplicationContext()).text("Cannot load data for this donor(s).").show(this);
+        Snackbar.with(getApplicationContext()).text("Cannot load data for this bpack.").show(this);
     }
 
     private void getItemResult(){
@@ -114,18 +117,22 @@ public class TransfuseActivity extends AppCompatActivity {
         try {
             jsonObject = new JSONObject(JSON_STRING);
 
-            donorId =new String();
-            bpackId =new String();
-            btype   =new String();
-            amount  =new String();
+            sourceTS = new String();
+            status   = new String();
+            bpackId  = new String();
+            btype    = new String();
+            btype    = new String();
+            amount   = new String();
 
             bpackId =Config.BpackID;
-            donorId=jsonObject.getString("donorId");
+            sourceTS =jsonObject.getString("donationTS");
+            status =jsonObject.getString("status");
             btype=jsonObject.getString("btype");
             amount=jsonObject.getString("amount");
 
         } catch (JSONException e) {
-            donorId="-";
+            sourceTS = "-";
+            status ="-";
             btype="-";
             amount="-";
         }
@@ -133,8 +140,9 @@ public class TransfuseActivity extends AppCompatActivity {
 
     private void setItem(){
 
+        txtTS.setText(sourceTS);
         txtBpackId.setText(bpackId);
-        txtDonorId.setText(donorId);
+        txtStatus.setText(status);
         txtBtype.setText(btype);
         txtAmount.setText(amount);
     }
