@@ -26,11 +26,11 @@ public class UpdateDonorActivity extends AppCompatActivity {
     private Button btnUpdate;
     private String JSON_STRING;
 
-    private String[] donorID;
-    private String[] name;
-    private String[] address;
-    private String[] phone;
-    private String[] age;
+    private String donorID;
+    private String name;
+    private String address;
+    private String phone;
+    private String age;
 
     private Context context=this;
 
@@ -113,32 +113,32 @@ public class UpdateDonorActivity extends AppCompatActivity {
         try {
             jsonObject = new JSONObject(JSON_STRING);
 
-            donorID =new String[1];
-            name =new String[1];
-            phone =new String[1];
-            address =new String[1];
-            age =new String[1];
+            donorID =new String();
+            name =new String();
+            phone =new String();
+            address =new String();
+            age =new String();
 
-            donorID[0]=Config.DonorID;
-            name[0]=jsonObject.getString("name");
-            address[0]=jsonObject.getString("address");
-            phone[0]=jsonObject.getString("phone");
-            age[0]=jsonObject.getString("age");
+            donorID=Config.DonorID;
+            name=jsonObject.getString("name");
+            address=jsonObject.getString("address");
+            phone=jsonObject.getString("phone");
+            age=jsonObject.getString("age");
 
         } catch (JSONException e) {
-            name[0]="-";
-            address[0]="-";
-            phone[0]="-";
-            age[0]="-";
+            name="-";
+            address="-";
+            phone="-";
+            age="-";
         }
     }
 
     private void setDonor(){
 
-        txtName.setText(name[0]);
-        txtAddress.setText(address[0]);
-        txtPhone.setText(phone[0]);
-        txtAge.setText(age[0]);
+        txtName.setText(name);
+        txtAddress.setText(address);
+        txtPhone.setText(phone.replaceAll("-",""));
+        txtAge.setText(age);
     }
 
     private void updateDonor(){

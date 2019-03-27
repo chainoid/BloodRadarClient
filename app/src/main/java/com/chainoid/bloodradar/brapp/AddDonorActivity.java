@@ -67,7 +67,7 @@ public class AddDonorActivity extends AppCompatActivity {
 
     private void createProduct(){
         String uri=txtName.getText().toString().trim()+"-"+ txtAddress.getText().toString().trim()+"-"+
-                   txtPhone.getText().toString().trim()+"-"+ txtSSN.getText().toString().trim()+"-"+
+                   txtPhone.getText().toString().replace("-","").trim()+"-"+ txtSSN.getText().toString().trim()+"-"+
                    txtAge.getText().toString().trim()+"-"+ txtSex.getText().toString().trim()+"-"+txtBtype.getText().toString().trim();
         final String URL_ADD_DONOR="http://"+Config.ServerIP+":"+Config.Port+"/add_donor/"+uri;
         class GetJSON extends AsyncTask<Void,Void,String> {

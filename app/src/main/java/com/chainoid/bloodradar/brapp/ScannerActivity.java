@@ -49,6 +49,7 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         finish();
         //mScannerView.resumeCameraPreview(SimpleScannerActivity.this);
         mScannerView.setFlash(false);
+        mScannerView.stopCamera();
     }
     @Override
     protected void onStop() {
